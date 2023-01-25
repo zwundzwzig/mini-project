@@ -6,6 +6,7 @@ public class ItemDTO {
 	int sequence;
 	String episodeTitle;
 	int price;
+	int episodeId;
 	
 	public int getId() {
 		return id;
@@ -37,10 +38,16 @@ public class ItemDTO {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	public int getEpisodeId() {
+		return episodeId;
+	}
+	public void setEpisodeId(int episodeId) {
+		this.episodeId = episodeId;
+	}
 	@Override
 	public String toString() {
 		return "ItemDTO [id=" + id + ", novelTitle=" + novelTitle + ", sequence=" + sequence + ", episodeTitle="
-				+ episodeTitle + ", price=" + price + "]";
+				+ episodeTitle + ", price=" + price + ", episodeId=" + episodeId + "]";
 	}
 	
 	

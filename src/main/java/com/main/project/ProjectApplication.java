@@ -5,10 +5,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
-@ComponentScan(basePackages = "main,sale")
+@ComponentScan(basePackages = "main,sale,user")
 
 //@Mapper 스캔 설정
-@MapperScan(basePackages = "main,sale")
+@MapperScan(basePackages = "main,sale,user")
 
 //1. 스프링부트 시작 클래스 - tomcat 시작
 //@ComponentScan(basepackage="com.example.demo") 의 역할
