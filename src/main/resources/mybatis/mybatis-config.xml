@@ -6,6 +6,7 @@
 
 	<typeAliases>
 		<typeAlias type="main.NovelDTO" alias="noveldto"/>
+		<typeAlias type="episodes.EpisodesDTO" alias="episodesdto"/>
 	</typeAliases>
 
 </configuration>
