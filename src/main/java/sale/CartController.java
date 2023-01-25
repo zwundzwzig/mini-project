@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -54,6 +55,21 @@ public class CartController {
 		service.deleteCartItem(id);
 		return true;
 		
+	}
+	
+	@ResponseBody
+	@PostMapping("/buy")
+	public boolean buyEpisodes(HttpSession session) {
+		//String userId = (String)session.getAttribute("id");
+		/*
+		if(userId == null) {
+			mv.setViewName("/login");
+			return mv;
+		}
+		*/
+		int userId = 1;
+		service.buyEpisodes(userId);
+		return true;
 	}
 		
 }

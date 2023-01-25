@@ -38,6 +38,9 @@
 			</tr>
 		</tfoot>
 	</table>
+	
+	<input type="button" id="buy" value="결제하기">
+	
 	<script src="/resources/js/jquery-3.6.1.min.js"></script>
 	<script>
 		function updateTotalPrice(){
@@ -66,6 +69,29 @@
 		         updateTotalPrice();
 		      })
 		    });
+		
+		$("#buy").on("click", function(){
+	
+			let request = $.ajax({
+			  url: "/buy",
+			  method: "POST",
+			  dataType: "json"
+			});
+			request.done(function( response ) {
+				if (response == true) {
+                    alert("결제에 성공하셨습니다.");
+                    window.location = "/mypage";
+                }
+			});
+				 
+			request.fail(function( jqXHR, textStatus ) {
+			  alert( "Request failed: " + textStatus );
+			});
+		})
+		
+		
+		
+		 
 		
 		
 	</script>

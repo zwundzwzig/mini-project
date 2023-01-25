@@ -15,10 +15,40 @@
 		where c.user_id=#{id}
 	</select>
 	
+	<select id="getCartEpisodeIds" parameterType="int" resultType="int">
+		select episode_id from carts
+		where user_id = #{userId}
+	</select>
+	
 	<delete id="deleteCartItem" parameterType="int">
 		delete from carts
 		where id=#{id}
 	</delete>
-
+	
+	<select id="getTotalPrice" parameterType="int" resultType="int">
+		SELECT SUM(price)
+		FROM carts c JOIN episodes e ON c.episode_id=e.id
+		WHERE c.user_id=#{user}
+	</select>
+	
+	<update id="subtractSand">
+		update users
+		set sand = sand - #{totalPrice}
+		where id = #{userId}
+	</update>
+	
+	<insert id="addToLibrary">
+		insert into libraries(user_id, episode_id) 
+		values 
+		<foreach item="episodeId" collection="episodeIds" separator=",">
+		 (#{userId}, #{episodeId})
+		</foreach> 
+	</insert>
+	
+	<delete id="clearCart">
+		delete from carts
+		where user_id=#{userId}
+	</delete>
+	
 </mapper>
 
