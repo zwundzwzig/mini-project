@@ -64,9 +64,10 @@ main .upper .title .btn {
 
 .main .lower .categoryList .category {
     border: 1px solid black;
+    height: 250px;
     border-radius: 5px;
     margin-bottom: 30px;
-    padding: 10px 15px 10px 15px;
+    padding: 20px 15px 10px 15px;
 }
 
 .main .lower .categoryList .category .top {
@@ -83,15 +84,8 @@ main .upper .title .btn {
     width: 60px;
 }
 
-.main .lower .categoryList .category .bottom1, .bottom2 {
-    position: relative;
-    display: flex;
-    flex-flow: row;
-    justify-content: space-around;
-    margin-top: 10px;
-}
-
 .main .lower .categoryList .category .item {
+    float: left;
     width: 200px;
     min-height: 220px;
     flex-flow: wrap;
@@ -102,4 +96,17 @@ main .upper .title .btn {
     width: 100px;
     height: 150px;
     margin: 12px 0 5px 0;
+}
+
+.main .lower .categoryList .category .item .description{
+    width: 100%;
+    /* 	border: 1px solid black; */
+}
+.main .lower .categoryList .category .item .description .novel_name{
+    margin-top:3px;
+    font-weight: 600;
+}
+.main .lower .categoryList .category .item .description .title{
+    margin-top:3px;
+    font-size: 14px;
 }
