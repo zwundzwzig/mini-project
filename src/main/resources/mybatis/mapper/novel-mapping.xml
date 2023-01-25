@@ -12,5 +12,31 @@
 		select * from novels
 	</select>
 
+	<select id="getOneNovel" resultType="noveldto" parameterType="int">
+		select * from novels where id=#{id}
+	</select>
+	
+	<select id="getTotalNovel" resultType="int" parameterType="int">
+		select count(*) from episodes where novel_id=#{novel_id} 
+	</select>
+	
+	<select id="getNovelList" resultType="episodesdto" parameterType="int">
+		select * from episodes where novel_id=#{id} 
+					order by id limit #{limit}, 3
+	</select>
+	
+	<insert id="insertCart" parameterType="map">
+		insert into carts (user_id, episode_id) values (#{user_id}, #{episode_id)
+	</insert>
+	
+	<update id="updateViewCount" parameterType="int">
+		update novels set viewcount=viewcount+1 where id=#{id}
+	</update>
 </mapper>
+
+
+
+
+
+
 
