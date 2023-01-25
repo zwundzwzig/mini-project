@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h1>장바구니</h1>
-	
+	<h1>총 <span id="totalCount">${ cnt }</span>개</h1>
 	<table>
 		<thead>
 			<tr>
@@ -25,10 +25,24 @@
 					<td>${ item.novelTitle }</td>
 					<td>${ item.sequence }</td>
 					<td>${ item.episodeTitle }</td>
-					<td>${ item.price }</td>
+					<td class="price">${ item.price }</td>
 				</tr>
 			</c:forEach>
 		</tbody>
+		<tfoot>
+			<tr>
+				<th scope="row" colspan="3" >total</th>
+				<td id="total"></td>
+			</tr>
+		</tfoot>
 	</table>
+	<script src="/resources/js/jquery-3.6.1.min.js"></script>
+	<script>
+		let priceCells = [...document.getElementsByClassName('price')];
+		let totalPrice =  priceCells.reduce(
+				(acc, cur) => acc + Number(cur.innerText), 0);
+		
+		$("#total").html(totalPrice);
+	</script>
 </body>
 </html>
