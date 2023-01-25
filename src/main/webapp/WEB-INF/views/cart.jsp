@@ -46,6 +46,10 @@
 			$("#total").html(totalPrice);
 		}
 		
+		function updateTotalCount(){
+			$("#totalCount").html($("tbody>tr").length);
+		}
+		
 		updateTotalPrice();
 		
 		
