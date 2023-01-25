@@ -13,6 +13,7 @@
 	<table>
 		<thead>
 			<tr>
+				<th>선택</th>
 				<th>소설제목</th>
 				<th>회차</th>
 				<th>회차제목</th>
@@ -23,17 +24,18 @@
 		<tbody>
 			<c:forEach items="${ items }" var="item">
 				<tr id="${ item.id }">
+					<td><input type="checkbox" id="ch${ item.id }" class="rowCheckbox" data-item-id="${ item.id }" checked="checked"></td>
 					<td>${ item.novelTitle }</td>
 					<td>${ item.sequence }</td>
 					<td>${ item.episodeTitle }</td>
-					<td class="price">${ item.price }</td>
+					<td class="price" id="price${ item.id }">${ item.price }</td>
 					<td><input type="button" class="delete" data-item-id="${ item.id }" value="삭제"></td>
 				</tr>
 			</c:forEach>
 		</tbody>
 		<tfoot>
 			<tr>
-				<th scope="row" colspan="3" >total</th>
+				<th scope="row" colspan="4" >선택된 작품의 total</th>
 				<td id="total"></td>
 			</tr>
 		</tfoot>
@@ -46,7 +48,8 @@
 		function updateTotalPrice(){
 			let priceCells = [...document.getElementsByClassName('price')];
 			let totalPrice =  priceCells.reduce(
-					(acc, cur) => acc + Number(cur.innerText), 0);
+					(acc, cur) => acc + Number(cur.innerText)
+					, 0);
 			
 			$("#total").html(totalPrice);
 		}
@@ -57,6 +60,16 @@
 		
 		updateTotalPrice();
 		
+		$(".rowCheckbox").change(function(){
+			let oldNum = Number($("#total").text());
+			if($(this).is(":checked")){
+				var newNum = oldNum + Number($("#price"+this.dataset.itemId).text());
+			}else{
+				var newNum = oldNum - Number($("#price"+this.dataset.itemId).text());
+			}
+			$("#total").text(newNum);
+		});
+		
 		$(".delete").on("click", function(e){
 		    $.ajax({
 		        method : 'DELETE',
@@ -64,9 +77,12 @@
 		        data : { id : e.target.dataset.itemId }
 		      }).done(function(result){
 		        //AJAX 성공시 실행 코드
+		        if($("#ch"+e.target.dataset.itemId).is(":checked")){
+		        	let oldNum = Number($("#total").text());
+		        	var newNum = oldNum - Number($("#price"+e.target.dataset.itemId).text());
+		        	$("#total").text(newNum);
+		        }
 		    	 $("#"+e.target.dataset.itemId).remove();
-		         updateTotalCount();
-		         updateTotalPrice();
 		      })
 		    });
 		
