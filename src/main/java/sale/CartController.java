@@ -31,7 +31,7 @@ public class CartController {
 		}
 		*/
 		
-		int id = 1;
+		int id = 5;
 		
 		int cnt = service.getNumberOfItems();
         List<ItemDTO> items = service.getCartItems(id);
@@ -67,7 +67,7 @@ public class CartController {
 			return mv;
 		}
 		*/
-		int userId = 1;
+		int userId = 5;
 		service.buyEpisodes(userId);
 		return true;
 	}
