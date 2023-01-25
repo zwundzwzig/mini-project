@@ -33,7 +33,8 @@
             <form action="search" method="get">
                 <select id="search_select" name="search_select">
                     <option value="title">제목</option>
-                    <option value="writer">지은이</option>
+                    <option value="author">저자</option>
+                    <option value="genre">장르</option>
                 </select>
                 <input type="text" placeholder="검색어 입력" name="keyword">
                 <button type="submit">검색</button>

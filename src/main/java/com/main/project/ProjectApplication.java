@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @ComponentScan(basePackages = "main,sale,user")
-
+@ComponentScan(basePackages = "novel")
 //@Mapper 스캔 설정
 @MapperScan(basePackages = "main,sale,user")
 
