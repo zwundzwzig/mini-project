@@ -38,11 +38,18 @@
 	</table>
 	<script src="/resources/js/jquery-3.6.1.min.js"></script>
 	<script>
-		let priceCells = [...document.getElementsByClassName('price')];
-		let totalPrice =  priceCells.reduce(
-				(acc, cur) => acc + Number(cur.innerText), 0);
+		function updateTotalPrice(){
+			let priceCells = [...document.getElementsByClassName('price')];
+			let totalPrice =  priceCells.reduce(
+					(acc, cur) => acc + Number(cur.innerText), 0);
+			
+			$("#total").html(totalPrice);
+		}
 		
-		$("#total").html(totalPrice);
+		updateTotalPrice();
+		
+		
+		
 	</script>
 </body>
 </html>
