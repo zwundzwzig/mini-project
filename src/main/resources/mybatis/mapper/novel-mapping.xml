@@ -4,12 +4,45 @@
 
 <mapper namespace="main.NovelDAO">
 
-	<select id="getNumberOfNovels" resultType="int">
-		select count(*) from novels
+	<select id="getNumberOfNovels" resultType="map">
+		SELECT genre, COUNT(*) AS cnt FROM novels GROUP BY genre
 	</select>
 
-	<select id="getAllNovels" resultType="noveldto">
+	<select id="getNewNovels" resultType="noveldto">
+		SELECT * FROM novels ORDER BY indate DESC LIMIT #{limit}, 4
+	</select>
+
+	<select id="getRomanceNovels" resultType="noveldto">
+		SELECT * FROM novels WHERE genre = "로맨스/로판" ORDER BY viewcount DESC LIMIT  #{limit},4
+	</select>
+
+	<select id="getFantasyNovels" resultType="noveldto">
+		SELECT * FROM novels WHERE genre = "판타지/무협" ORDER BY viewcount DESC LIMIT  #{limit},4
+	</select>
+
+	<select id="getBLNovels" resultType="noveldto">
+		SELECT * FROM novels WHERE genre = "BL" ORDER BY viewcount DESC LIMIT  #{limit},4
+	</select>
+
+	<sql id="search">
 		select * from novels
+	</sql>
+
+	<select id="searchSimple" resultType="noveldto"  parameterType="noveldto">
+		<include refid="search" />
+		<where>
+			<choose>
+				<when test="title != null and title != ''">
+					title=#{title}
+				</when>
+				<when test="author != null and author != ''">
+					author=#{author}
+				</when>
+				<when test="genre != null and genre != ''">
+					genre=#{genre}
+				</when>
+			</choose>
+		</where>
 	</select>
 
 	<select id="getOneNovel" resultType="noveldto" parameterType="int">
