@@ -20,4 +20,10 @@ public class SaleServiceImpl implements SaleService{
     public List<ItemDTO> getCartItems(int id) {
         return dao.getCartItems(id);
     }
+
+	@Override
+	public void deleteCartItem(int id) {
+		dao.deleteCartItem(id);
+	}
+    
 }

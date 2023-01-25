@@ -11,5 +11,6 @@ public interface SaleDAO {
 
     public int getNumberOfItems();
     public List<ItemDTO> getCartItems(int id);
+	public void deleteCartItem(int id);
 
 }

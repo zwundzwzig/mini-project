@@ -17,6 +17,7 @@
 				<th>회차</th>
 				<th>회차제목</th>
 				<th>가격</th>
+				<th>삭제</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -26,6 +27,7 @@
 					<td>${ item.sequence }</td>
 					<td>${ item.episodeTitle }</td>
 					<td class="price">${ item.price }</td>
+					<td><input type="button" class="delete" data-item-id="${ item.id }" value="삭제"></td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -52,6 +54,18 @@
 		
 		updateTotalPrice();
 		
+		$(".delete").on("click", function(e){
+		    $.ajax({
+		        method : 'DELETE',
+		        url : '/cart',
+		        data : { id : e.target.dataset.itemId }
+		      }).done(function(result){
+		        //AJAX 성공시 실행 코드
+		    	 $("#"+e.target.dataset.itemId).remove();
+		         updateTotalCount();
+		         updateTotalPrice();
+		      })
+		    });
 		
 		
 	</script>
