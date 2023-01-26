@@ -6,9 +6,27 @@
 <head>
     <meta charset="UTF-8">
     <title>마이페이지</title>
+    <style>
+		h1 {
+		  text-align: center;
+		}
+		table{
+			    margin-left: auto;
+			    margin-right: auto;
+		}
+	</style>
 </head>
 <body>
+<!-- 상단바  -->
+<jsp:include page="header.jsp">
+    <jsp:param value="false" name="login"/>
+</jsp:include>
 <h1>내 서재</h1>
+<c:if test="${empty purchases }">
+	<h1>구매하신 소설이 없어요ㅜ</h1>
+</c:if>
+
+<c:if test="${ not empty purchases }">
 <table>
     <thead>
     <th>소설제목</th>
@@ -27,7 +45,8 @@
     </c:forEach>
     </tbody>
 </table>
-
+</c:if>
+<jsp:include page="footer.jsp"/>
 <script src="/resources/js/jquery-3.6.1.min.js"></script>
 <script>
 </script>

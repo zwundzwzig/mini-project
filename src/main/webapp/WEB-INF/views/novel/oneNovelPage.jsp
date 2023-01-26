@@ -12,6 +12,8 @@
     <script>
       /* 체크박스 전체 선택 */
       $(document).ready(function(){
+    	${errorMsg}
+    	  
         $("#all").click(function(){
           if($("#all").prop("checked")){
             $("input[name=check]").prop("checked", true);
@@ -35,7 +37,6 @@
         $("#buy").click(function(e){
           var chk = confirm("구매하시겠습니까?");
           if(chk){
-            alert("구매되었습니다.");
             $("form").attr("action","/buyNow");
           }else{
             e.preventDefault();
