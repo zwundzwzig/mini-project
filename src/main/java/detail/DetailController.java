@@ -18,10 +18,14 @@ public class DetailController {
 
     @GetMapping("/viewer")
     public ModelAndView openViewPage(HttpSession session, HttpServletRequest request) {
-        //int userId =  Integer.valueOf((String)session.getAttribute("userId"));
-        int userId = 1;
+    	ModelAndView mv = new ModelAndView();
+    	 if(session.getAttribute("loginid") == null) {
+ 			mv.setViewName("user/login");
+ 			return mv;
+ 		}
+         
+         Integer userId = (Integer)session.getAttribute("loginid");
         int episodeId = Integer.valueOf(request.getParameter("episodeId"));
-        ModelAndView mv = new ModelAndView();
         String contents = service.getContents(episodeId, userId);
 
         if (contents == null) {

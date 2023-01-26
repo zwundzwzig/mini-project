@@ -107,12 +107,16 @@
       url: '/cart',
       data: {id: e.target.dataset.itemId}
     }).done(function (result) {
+    	if(result == false){
+    		alert("로그인 후 이용하세요");
+    		return false;
+    	}
       //AJAX 성공시 실행 코드
       if ($("#ch" + e.target.dataset.itemId).is(":checked")) {
         let oldNum = Number($("#total").text());
         var newNum = oldNum - Number($("#price" + e.target.dataset.itemId).text());
         $("#total").text(newNum);
-        $("#total2").val(newNum);
+        $("#total2").text(newNum);
 
         let oldCount = Number($("#totalCount").text());
         let newCount = oldCount - 1;

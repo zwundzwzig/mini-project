@@ -24,19 +24,20 @@ public class CartController {
     @GetMapping("/cart")
     public ModelAndView cart(HttpSession session) {
         ModelAndView mv = new ModelAndView();
-        //String userId = (String)session.getAttribute("id");
-		/*
-		if(loginId == null) {
-			mv.setViewName("/login");
+        
+        if(session.getAttribute("loginid") == null) {
+			mv.setViewName("user/login");
 			return mv;
 		}
-		*/
+        
+        Integer userId = (Integer)session.getAttribute("loginid");
+		
 
         int id = 5;
 
-        int cnt = service.getNumberOfItems(id);
-        List<ItemDTO> items = service.getCartItems(id);
-        int balance = service.getBalance(id);
+        int cnt = service.getNumberOfItems(userId);
+        List<ItemDTO> items = service.getCartItems(userId);
+        int balance = service.getBalance(userId);
         mv.addObject("cnt", cnt);
         mv.addObject("items", items);
         mv.addObject("balance", balance);
@@ -47,32 +48,21 @@ public class CartController {
     @ResponseBody
     @DeleteMapping("/cart")
     public boolean deleteCartItem(HttpSession session, int id) {
-        //String userId = (String)session.getAttribute("id");
-		/*
-		if(loginId == null) {
-			mv.setViewName("/login");
-			return mv;
+    	if(session.getAttribute("loginid") == null) {
+			return false;
 		}
-		*/
-		
 		service.deleteCartItem(id);
 		return true;
-		 
 	}
-	
-
 
     @PostMapping("/buy")
     public String buyEpisodes(HttpSession session,
         HttpServletRequest request) {
-        //String userId = (String)session.getAttribute("id");
-		/*
-		if(userId == null) {
-			mv.setViewName("/login");
-			return mv;
+    	if(session.getAttribute("loginid") == null) {
+			return "user/login";
 		}
-		*/
-        int userId = 5;
+        
+        Integer userId = (Integer)session.getAttribute("loginid");
         String[] strEpisodeIds = request.getParameterValues("toBuy");
         int[] episodeIds = Arrays.stream(strEpisodeIds).mapToInt(Integer::parseInt).toArray();
 
