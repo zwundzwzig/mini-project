@@ -17,5 +17,9 @@
 		WHERE l.user_id=1;
 	</select>
 
+	<select id="oneMember" parameterType="String" resultType="userdto">
+		select * from users where nickname=#{nickname}
+	</select>
+
 </mapper>
 

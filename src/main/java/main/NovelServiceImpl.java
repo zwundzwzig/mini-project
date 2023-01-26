@@ -62,22 +62,29 @@ public class NovelServiceImpl implements NovelService{
 		return dao.getNovelList(id, limit);
 	}
 
-//	@Override
-//	public void insertCart(Map<Object, Object> map) {
-//		dao.insertCart(map);
-//	}
-
-
 	@Override
 	public int updateViewCount(int id) {
 		return dao.updateViewCount(id);
 	}
 
-	@Override
-	public List<NovelDTO> getAllNovels() {
-		// TODO Auto-generated method stub
-		return null;
+  @Override
+	public void insertCart(int user_id, Integer episode_id) {
+		dao.insertCart(user_id, episode_id);
 	}
-	
-	
+
+	@Override
+	public void insertLibraries(int user_id, Integer episode_id) {
+		dao.insertLibraries(user_id, episode_id);
+	}
+
+	@Override
+	public void updateSand(int novel_cnt, int user_id) {
+		dao.updateSand(novel_cnt,user_id);
+	}
+
+	@Override
+	public List<Integer> getLibraries(int user_id) {
+		return dao.getLibraries(user_id);
+	}
+
 }

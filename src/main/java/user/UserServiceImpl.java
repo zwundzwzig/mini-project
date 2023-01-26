@@ -15,8 +15,12 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public List<ItemDTO> getPurchases(int userId) {
-		// TODO Auto-generated method stub
 		return dao.getPurchases(userId);
 	}
-	
+
+	@Override
+	public UserDTO oneMember(String nickname) {
+		return dao.oneMember(nickname);
+	}
+
 }
