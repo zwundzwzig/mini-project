@@ -19,11 +19,15 @@ public class UserController {
 
     @GetMapping("/mypage")
     public ModelAndView showMyPage(HttpSession session) {
-        //int userId = (String)session.getAttribute("userId");
-        int userId = 1;
+    	ModelAndView mv = new ModelAndView();
+    	
+    	 if(session.getAttribute("loginid") == null) {
+ 			mv.setViewName("user/login");
+ 			return mv;
+ 		}
+         Integer userId = (Integer)session.getAttribute("loginid");
 
         List<ItemDTO> purchases = service.getPurchases(userId);
-        ModelAndView mv = new ModelAndView();
         mv.addObject("purchases", purchases);
         mv.setViewName("mypage");
 
