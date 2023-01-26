@@ -5,9 +5,10 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Insert title here</title>
+    <title>웹뷰어</title>
 </head>
 <body>
+	<a href="/mypage">내서재로 가기</a>
 	<c:if test="${not empty prevAndNext.prevId}">
 		<a href="/viewer?episodeId=${ prevAndNext.prevId }">
 		    이전화
@@ -18,9 +19,9 @@
 		    다음화
 		</a>
 	</c:if>
-
+	<br>
 ${ contents }
-
+	<br>
 	<c:if test="${not empty prevAndNext.prevId}">
 		<a href="/viewer?episodeId=${ prevAndNext.prevId }">
 		    이전화
