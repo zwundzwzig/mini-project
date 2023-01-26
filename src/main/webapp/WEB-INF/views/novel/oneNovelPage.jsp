@@ -17,7 +17,7 @@ $(document).ready(function(){
 			$("input[name=check]").prop("checked", true);
 		} else{
 			$("input[name=check]").prop("checked", false);
-		}
+		} 
 	});
 	
 	//체크된 소설 장바구니 넘기기

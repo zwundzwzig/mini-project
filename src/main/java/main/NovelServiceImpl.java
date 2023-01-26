@@ -22,7 +22,7 @@ public class NovelServiceImpl implements NovelService{
 
     @Override
     public List<NovelDTO> getNewNovels(int page) {
-        return dao.getNewNovels(page);
+        return dao.getNewNovels(page); 
     }
 
     @Override

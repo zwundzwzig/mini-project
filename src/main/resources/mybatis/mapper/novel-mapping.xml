@@ -51,7 +51,7 @@
 	
 	<select id="getTotalNovel" resultType="int" parameterType="int">
 		select count(*) from episodes where novel_id=#{novel_id} 
-	</select>
+	</select> 
 	
 	<select id="getNovelList" resultType="episodesdto" parameterType="int">
 		select * from episodes where novel_id=#{id} 

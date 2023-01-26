@@ -10,7 +10,7 @@ import episodes.EpisodesDTO;
 
 import java.util.List;
 import java.util.Map;
-
+ 
 @Mapper
 @Repository
 public interface NovelDAO {

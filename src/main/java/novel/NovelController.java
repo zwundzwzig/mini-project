@@ -60,7 +60,7 @@ public class NovelController {
 		mv.addObject("list", list);
 		mv.setViewName("novel/oneNovelPage");
 		return mv;
-	}
+	} 
 
 	@PostMapping("/cartIn") // check => episode_id..
 	public ModelAndView cartIn(Integer[] check, HttpServletRequest request) {

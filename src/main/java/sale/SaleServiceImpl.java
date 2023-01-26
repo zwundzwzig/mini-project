@@ -17,7 +17,7 @@ public class SaleServiceImpl implements SaleService{
     public int getNumberOfItems(int userId) {
         return dao.getNumberOfItems(userId);
     }
-
+ 
     @Override
     public List<ItemDTO> getCartItems(int id) {
         return dao.getCartItems(id);
