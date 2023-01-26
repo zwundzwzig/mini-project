@@ -75,7 +75,11 @@ public class CartController {
 		String[] strEpisodeIds = request.getParameterValues("toBuy");
 		int[] episodeIds = Arrays.stream(strEpisodeIds).mapToInt(Integer::parseInt).toArray();
 		
-		service.buyEpisodes(userId, episodeIds);
+		try {
+			service.buyEpisodes(userId, episodeIds);
+		} catch (Exception e) {
+			return "redirect:/cart";
+		}
 		return "redirect:/mypage";
 	}
 		
