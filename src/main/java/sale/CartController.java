@@ -24,19 +24,20 @@ public class CartController {
     @GetMapping("/cart")
     public ModelAndView cart(HttpSession session) {
         ModelAndView mv = new ModelAndView();
-        //String userId = (String)session.getAttribute("id");
-		/*
-		if(loginId == null) {
-			mv.setViewName("/login");
+        
+        if(session.getAttribute("loginid") == null) {
+			mv.setViewName("user/login");
 			return mv;
 		}
-		*/
+        
+        Integer userId = (Integer)session.getAttribute("loginid");
+		
 
         int id = 5;
 
-        int cnt = service.getNumberOfItems(id);
-        List<ItemDTO> items = service.getCartItems(id);
-        int balance = service.getBalance(id);
+        int cnt = service.getNumberOfItems(userId);
+        List<ItemDTO> items = service.getCartItems(userId);
+        int balance = service.getBalance(userId);
         mv.addObject("cnt", cnt);
         mv.addObject("items", items);
         mv.addObject("balance", balance);
