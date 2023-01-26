@@ -58,9 +58,9 @@
         <div class="menu3">
             <a class="a" href="/">인기순</a>
             <a class="a" href="/">조회순</a>
-            <a class="a" href="/">로맨스/로판</a>
-            <a class="a" href="/">판타지/무협</a>
-            <a class="a" href="/">BL</a>
+            <a class="a" href="/search?search_select=genre&keyword=로맨스">로맨스/로판</a>
+            <a class="a" href="/search?search_select=genre&keyword=판타지">판타지/무협</a>
+            <a class="a" href="/search?search_select=genre&keyword=BL">BL</a>
         </div>
     </nav>
 </header>
