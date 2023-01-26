@@ -60,14 +60,11 @@ public class CartController {
     @PostMapping("/buy")
     public String buyEpisodes(HttpSession session,
         HttpServletRequest request) {
-        //String userId = (String)session.getAttribute("id");
-		/*
-		if(userId == null) {
-			mv.setViewName("/login");
-			return mv;
+    	if(session.getAttribute("loginid") == null) {
+			return "user/login";
 		}
-		*/
-        int userId = 5;
+        
+        Integer userId = (Integer)session.getAttribute("loginid");
         String[] strEpisodeIds = request.getParameterValues("toBuy");
         int[] episodeIds = Arrays.stream(strEpisodeIds).mapToInt(Integer::parseInt).toArray();
 
