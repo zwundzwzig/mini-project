@@ -1,112 +1,114 @@
 @charset "UTF-8";
 
 body {
-    margin: 0;
-    position: relative;
+  margin: 0;
+  position: relative;
 }
 
 .main {
-    position: relative;
-    margin: 0 auto;
-    background-color: rgb(240, 240, 240);
+  position: relative;
+  margin: 0 auto;
+  background-color: rgb(240, 240, 240);
 }
 
 .main .lower {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    width: 90%;
-    bottom: 30px;
-    padding: 20px 10px 20px 10px;
-    margin: 0 auto;
-    border: 2px solid #012A5E;
-    border-top: none;
-    background-color: white;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  bottom: 30px;
+  padding: 20px 10px 20px 10px;
+  margin: 0 auto;
+  border: 2px solid #012A5E;
+  border-top: none;
+  background-color: white;
 }
 
 .main .upper {
-    position: relative;
-    align-items: center;
-    top: 30px;
-    width: 90%;
-    min-height: 350px;
-    padding: 20px 10px 20px 10px;
-    margin: 0px auto;
-    border: 2px solid #012A5E;
-    border-bottom: none;
-    border-radius: 5px;
-    background-color: white;
+  position: relative;
+  align-items: center;
+  top: 30px;
+  width: 90%;
+  min-height: 350px;
+  padding: 20px 10px 20px 10px;
+  margin: 0px auto;
+  border: 2px solid #012A5E;
+  border-bottom: none;
+  border-radius: 5px;
+  background-color: white;
 }
 
 .main .upper .title {
-    padding: 0 0 0 20px;
-    margin-bottom: 20px;
+  padding: 0 0 0 20px;
+  margin-bottom: 20px;
 }
 
 main .upper .title .btn {
-    text-align: center;
-    width: 60px;
+  text-align: center;
+  width: 60px;
 }
 
 .main .upper .advertisement {
-    position: relative;
-    width: 95%;
-    margin: 0px auto;
-    min-height: 200px;
-    border-radius: 5px;
-    padding: 20px 0px 80px 0px;
-    background-color: rgba(204, 220, 215, 0.3);
+  position: relative;
+  width: 95%;
+  margin: 0px auto;
+  min-height: 200px;
+  border-radius: 5px;
+  padding: 20px 0px 80px 0px;
+  background-color: rgba(204, 220, 215, 0.3);
 }
 
 .main .lower .categoryList {
-    width: 90%;
+  width: 90%;
 }
 
 .main .lower .categoryList .category {
-    border: 1px solid black;
-    height: 250px;
-    border-radius: 5px;
-    margin-bottom: 30px;
-    padding: 20px 15px 10px 15px;
+  border: 1px solid black;
+  height: 250px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+  padding: 20px 15px 10px 15px;
 }
 
 .main .lower .categoryList .category .top {
-    position: relative;
-    display: flex;
-    flex-flow: row;
-    font-size: 17px;
-    justify-content: space-between;
-    color: #012A5E;
+  position: relative;
+  display: flex;
+  flex-flow: row;
+  font-size: 17px;
+  justify-content: space-between;
+  color: #012A5E;
 }
 
 .main .lower .categoryList .category .top .btn {
-    text-align: center;
-    width: 60px;
+  text-align: center;
+  width: 60px;
 }
 
 .main .lower .categoryList .category .item {
-    float: left;
-    width: 200px;
-    min-height: 220px;
-    flex-flow: wrap;
-    text-align: center;
+  float: left;
+  width: 200px;
+  min-height: 220px;
+  flex-flow: wrap;
+  text-align: center;
 }
 
 .main .lower .categoryList .category .item img {
-    width: 100px;
-    height: 150px;
-    margin: 12px 0 5px 0;
+  width: 100px;
+  height: 150px;
+  margin: 12px 0 5px 0;
 }
 
-.main .lower .categoryList .category .item .description{
-    width: 100%;
-    /* 	border: 1px solid black; */
+.main .lower .categoryList .category .item .description {
+  width: 100%;
+  /* 	border: 1px solid black; */
 }
-.main .lower .categoryList .category .item .description .novel_name{
-    margin-top:3px;
-    font-weight: 600;
+
+.main .lower .categoryList .category .item .description .novel_name {
+  margin-top: 3px;
+  font-weight: 600;
 }
-.main .lower .categoryList .category .item .description .title{
-    margin-top:3px;
-    font-size: 14px;
+
+.main .lower .categoryList .category .item .description .title {
+  margin-top: 3px;
+  font-size: 14px;
 }

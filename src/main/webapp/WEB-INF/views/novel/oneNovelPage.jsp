@@ -1,7 +1,7 @@
-<%@page import="episodes.EpisodesDTO"%>
-<%@page import="java.util.List"%>
+<%@page import="episodes.EpisodesDTO" %>
+<%@page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -43,51 +43,66 @@ $(document).ready(function(){
 	});
 	
 });
+   
 
-</script>
-<style type="text/css">
-#detail{
-width: 63%; height: 430px; float:right;
-}
-#check{
-width:53px;
-}
-#first_tr{
-border: 1px solid grey;
-background-color: #f5f5dc;
-}
-#second_tr{
-height: 32px;
-}
-#page{
-width:100%;
-text-align: center;
-}
-#sand{
-width:20px;
-height:18px;
-}
-#btn{
-width: auto;
-height: auto;
-text-align: center;
-}
-table{
-border:1px solid grey; 
-border-collapse: collapse; 
-width: 100%; 
-text-align: center;
-} 
-b{
-color:#012A5E;
-}
-#b2{
-color:#055375;
-}
-#title{
-width: 25%; height: 400px; float:left;
-}
-</style>
+    </script>
+    <style type="text/css">
+      #detail {
+        width: 63%;
+        height: 430px;
+        float: right;
+      }
+
+      #check {
+        width: 53px;
+      }
+
+      #first_tr {
+        border: 1px solid grey;
+        background-color: #f5f5dc;
+      }
+
+      #second_tr {
+        height: 32px;
+      }
+
+      #page {
+        width: 100%;
+        text-align: center;
+      }
+
+      #sand {
+        width: 20px;
+        height: 18px;
+      }
+
+      #btn {
+        width: auto;
+        height: auto;
+        text-align: center;
+      }
+
+      table {
+        border: 1px solid grey;
+        border-collapse: collapse;
+        width: 100%;
+        text-align: center;
+      }
+
+      b {
+        color: #012A5E;
+      }
+
+      #b2 {
+        color: #055375;
+      }
+
+      #title {
+        width: 25%;
+        height: 400px;
+        float: left;
+      }
+    </style>
 </head>
 <body>
 <!-- 상단바  -->
@@ -97,7 +112,7 @@ width: 25%; height: 400px; float:left;
 
 <!-- 웹소설 표지 /cart -->
 <form action="<%=request.getContextPath() %>" id="f" method="post">
-<img id="title" src="resources/images/novel/${dto.id}.jpg">
+    <img id="title" src="resources/images/novel/${dto.id}.jpg">
 
 <!-- 웹소설 설명란 -->
 <div id="detail"> 
@@ -112,7 +127,7 @@ ${dto.description}
 </div>  
 <div id="blank" style="clear:both;"></div>
  
-
+<input type="hidden" value="2" name="user_id">
 <!-- 에피소드 목록 -->
 <table>
 <tr id="first_tr">
@@ -144,24 +159,23 @@ ${dto.description}
 	</tr>
 </c:forEach>
 </table>
-
-<!-- 페이징 -->
-<div id="page">
-<%
-int totalCnt = (int)request.getAttribute("cnt");
-int totalPage = 0;
-if(totalCnt % 7 == 0){
-	totalPage = totalCnt / 7;
-}else{
-	totalPage = totalCnt /7 + 1;
-}
-for(int i=1;i<=totalPage;i++){
-%>
-<a href="oneNovelPage?id=${dto.id}&page=<%=i%>"><%=i%>페이지</a>
-<%
-}
-%>
-</div>
+    <!-- 페이징 -->
+    <div id="page">
+        <%
+            int totalCnt = (int) request.getAttribute("cnt");
+            int totalPage = 0;
+            if (totalCnt % 7 == 0) {
+                totalPage = totalCnt / 7;
+            } else {
+                totalPage = totalCnt / 7 + 1;
+            }
+            for (int i = 1; i <= totalPage; i++) {
+        %>
+        <a href="oneNovelPage?id=${dto.id}&page=<%=i%>"><%=i%>페이지</a>
+        <%
+            }
+        %>
+    </div>
 
 <!-- 장바구니, 구매 버튼 -->
 <div id="btn">

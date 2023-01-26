@@ -90,14 +90,16 @@ public class MainContorller {
     }
 
     @RequestMapping("/search")
-    public ModelAndView searchSimple(@RequestParam(value="search_select",required =true)String search_select ,  @RequestParam(value="keyword" , required = true) String keyword){
+    public ModelAndView searchSimple(
+        @RequestParam(value = "search_select", required = true) String search_select,
+        @RequestParam(value = "keyword", required = true) String keyword) {
         ModelAndView mv = new ModelAndView();
         NovelDTO dto = new NovelDTO();
-        if(search_select.equals("title")) {
+        if (search_select.equals("title")) {
             dto.setTitle(keyword);
-        }else if(search_select.equals("author")) {
+        } else if (search_select.equals("author")) {
             dto.setAuthor(keyword);
-        }else if(search_select.equals("genre")) {
+        } else if (search_select.equals("genre")) {
             dto.setGenre(keyword);
         }
         List<NovelDTO> searchresult = service.searchSimple(dto);
