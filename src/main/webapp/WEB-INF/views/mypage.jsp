@@ -22,12 +22,14 @@
 				<td>${ purchase.novelTitle }</td>
 				<td>${ purchase.sequence }</td>
 				<td>${ purchase.episodeTitle }</td>
-				<td><input type="button" data-episode-id="${ purchase.episodeId }" value="열람"></td>
+				<td><a href="/viewer?episodeId=${purchase.episodeId}" target="_blank">열람</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
 	
-	
+	<script src="/resources/js/jquery-3.6.1.min.js"></script>
+	<script>
+	</script>
 </body>
 </html>
