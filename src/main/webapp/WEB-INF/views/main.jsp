@@ -39,7 +39,7 @@
                             <img src="${img_src }" alt="X">
                             <div class="description">
                                 <div class="novel_name">
-                                    <a href="oneNovelPage/${novel.id}">${novel.id }</a>
+                                    <a href="oneNovelPage?id=${novel.id}&page=1">${novel.id }</a>
                                 </div>
                                 <div class="title">
                                         ${novel.title }
@@ -66,7 +66,7 @@
                             <img src="${img_src }" alt="X">
                             <div class="description">
                                 <div class="novel_name">
-                                    <a href="oneNovelPage/${novel.id}">${novel.id }</a>
+                                    <a href="oneNovelPage?id=${novel.id}&page=1">${novel.id }</a>
                                 </div>
                                 <div class="title">
                                         ${novel.title }
@@ -93,7 +93,7 @@
                             <img src="${img_src }" alt="X">
                             <div class="description">
                                 <div class="novel_name">
-                                    <a href="oneNovelPage/${novel.id}">${novel.id }</a>
+                                    <a href="oneNovelPage?id=${novel.id}&page=1">${novel.id }</a>
                                 </div>
                                 <div class="title">
                                         ${novel.title }
@@ -120,7 +120,7 @@
                             <img src="${img_src }" alt="X">
                             <div class="description">
                                 <div class="novel_name">
-                                    <a href="oneNovelPage/${novel.id}">${novel.id }</a>
+                                    <a href="oneNovelPage?id=${novel.id}&page=1">${novel.id }</a>
                                 </div>
                                 <div class="title">
                                         ${novel.title }

@@ -67,9 +67,11 @@ public class NovelServiceImpl implements NovelService{
 //		dao.insertCart(map);
 //	}
 
-
 	@Override
 	public int updateViewCount(int id) {
 		return dao.updateViewCount(id);
 	}
+
+
+
 }

@@ -16,12 +16,10 @@ import java.util.Map;
 public interface NovelDAO {
 
   //한솔
-  public int getNumberOfNovels();
-  public List<NovelDTO> getAllNovels();
 	public NovelDTO getOneNovel(int id);
 	public int getTotalNovel(int id); 
 	public List<EpisodesDTO> getNovelList(@Param("id")int id, @Param("limit")int limit);
-  //public void insertCart(Map<Object, Object> map);
+    //public void insertCart(Map<Object, Object> map);
 	public int updateViewCount(int id);
   
   //승희

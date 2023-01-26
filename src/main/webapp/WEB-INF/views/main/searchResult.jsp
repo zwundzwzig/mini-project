@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>team4-bookstore</title>
+    <title>🦊사막여우🦊</title>
     <script src="resources/js/jquery-3.6.1.min.js"></script>
     <link href="resources/css/main/searchResult.css" rel="stylesheet">
 </head>
@@ -15,29 +15,30 @@
     <jsp:param value="false" name="login"/>
 </jsp:include>
 <main class="main">
-    <section class="section1">
-        <div class="right">
-            <div class="menu1">
+    <section class="lower">
+        <div class="categoryList">
+            <div class="category">
                 <div class="top">
-                    <div class="title">검색결과</div>
+                    <div class="title">검색결과🦊</div>
                 </div>
-                <div class="bottom1" id="month_box">
-                    <c:forEach items="${searchresult }" var="novel" varStatus="b">
+                <div class="bottom" id="month_box">
+                    <c:forEach items="${searchresult }" var="novel">
                         <c:set var="img_path" value="resources/images/novel/"/>
                         <c:set var="img_src" value="${img_path }${novel.id }.jpg"/>
                         <div class="item">
                             <img src="${img_src }">
                             <div class="description">
-                                <div class="book_name"><a
-                                        href="productdetail/${novel.id}">${novel.title }</a>
+                                <div class="novel_name"><a
+                                        href="oneNovelPage?id=${novel.id}&page=1">${novel.id }</a>
                                 </div>
-                                <div class="writer">${novel.title }</div>
+                                <div class="title">
+                                        ${novel.title }
+                                </div>
                             </div>
                         </div>
                     </c:forEach>
                 </div>
             </div>
-        </div>
     </section>
 </main>
 
