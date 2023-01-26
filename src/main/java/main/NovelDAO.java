@@ -16,7 +16,6 @@ import java.util.Map;
 public interface NovelDAO {
 
   //한솔
-  public int getNumberOfNovels();
   public List<NovelDTO> getAllNovels();
 	public NovelDTO getOneNovel(int id);
 	public int getTotalNovel(int id); 

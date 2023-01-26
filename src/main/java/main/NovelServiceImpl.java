@@ -72,4 +72,12 @@ public class NovelServiceImpl implements NovelService{
 	public int updateViewCount(int id) {
 		return dao.updateViewCount(id);
 	}
+
+	@Override
+	public List<NovelDTO> getAllNovels() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 }

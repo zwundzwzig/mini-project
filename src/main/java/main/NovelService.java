@@ -9,7 +9,6 @@ import episodes.EpisodesDTO;
 public interface NovelService {
 
   //한솔
-  public int getNumberOfNovels();
   public List<NovelDTO> getAllNovels();
 	public NovelDTO getOneNovel(int id);
 	public int getTotalNovel(int id);
