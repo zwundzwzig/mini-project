@@ -8,6 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <title>상세 페이지</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <script src="<%=request.getContextPath() %>resources/js/jquery-3.6.1.min.js"></script>
     <script>
       /* 체크박스 전체 선택 */
@@ -16,31 +17,41 @@
     	  
         $("#all").click(function(){
           if($("#all").prop("checked")){
-            $("input[name=check]").prop("checked", true);
+            $("input:checkbox[name='check']").prop("checked", true);
           } else{
-            $("input[name=check]").prop("checked", false);
+            $("input:checkbox[name='check']").prop("checked", false);
           }
         });
 
         //체크된 소설 장바구니 넘기기
         $("#cart").click(function(e){
-          var chk = confirm("장바구니?");
-          if(chk){
-            alert("담았다리");
-            $("form").attr("action","/cartIn");
-// document.getElementById("f").submit();
-          }else{
-            e.preventDefault();
-          }
+        	if($("input:checkbox[name='check']").is(":checked") == true){
+	          var chk = confirm("선택한 소설 "+$("input:checkbox[name='check']:checked").length+"개를 담으시겠습니까?");
+	          if(chk){
+	            alert("담았다리");
+	            $("form").attr("action","/cartIn");
+	          }else{
+	            e.preventDefault();
+	          }
+        		
+        	}else{
+        		alert("소설을 선택하세요.");
+        	}
         });
 
+        //구매
         $("#buy").click(function(e){
-          var chk = confirm("구매하시겠습니까?");
-          if(chk){
-            $("form").attr("action","/buyNow");
-          }else{
-            e.preventDefault();
-          }
+        	if($("input:checkbox[name='check']").is(":checked") == true){
+	          var chk = confirm("선택한 소설 "+$("input:checkbox[name='check']:checked").length+"개를 구매하시겠습니까?");
+	          if(chk){
+	            alert("구매되었습니다.");
+	            $("form").attr("action","/buyNow");
+	          }else{
+	            e.preventDefault();
+	          }
+        	}else{
+        		alert("소설을 선택하세요.");
+        	}
         });
 
       });
@@ -74,15 +85,6 @@
         height: auto;
         text-align: center;
       }
-      table {
-        border: 1px solid grey;
-        border-collapse: collapse;
-        width: 100%;
-        text-align: center;
-      }
-      b {
-        color: #012A5E;
-      }
       #b2 {
         color: #055375;
       }
@@ -90,6 +92,23 @@
         width: 25%;
         height: 400px;
         float: left;
+      }
+      #like{
+      	width:30px;
+      	height: 30px;
+      }
+      #liked_img{
+      	width:21px;
+      	height: 25px;
+      }
+      table { 
+        border: 1px solid grey;
+        border-collapse: collapse;
+        width: 100%;
+        text-align: center;
+      }
+      b {
+        color: #012A5E;
       }
     </style>
 </head>
@@ -106,7 +125,8 @@
         <br><br><h1> ${dto.title} </h1>
         <b>연재중&nbsp;&nbsp;|&nbsp;&nbsp;작가 ${dto.author}&nbsp;&nbsp;|&nbsp;&nbsp;${dto.genre }
             &nbsp;&nbsp;|&nbsp;&nbsp;${dto.indate }&nbsp;&nbsp;|
-            &nbsp;&nbsp;조회수 ${dto.viewcount}&nbsp;&nbsp;|&nbsp;&nbsp;좋아요&nbsp;&nbsp;</b>
+            &nbsp;&nbsp;조회수 ${dto.viewcount}&nbsp;&nbsp;|
+            &nbsp;&nbsp;좋아요&nbsp;&nbsp;<button type="button" id="like" name="like"><img id="liked_img" src="resources/images/liked.png"></button></b>
         <hr /><br><br>
         ${dto.description}
         <br><br><br><br><br><br><hr /><br><br>
