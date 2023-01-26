@@ -14,8 +14,8 @@ public class SaleServiceImpl implements SaleService{
     SaleDAO dao;
 
     @Override
-    public int getNumberOfItems() {
-        return dao.getNumberOfItems();
+    public int getNumberOfItems(int userId) {
+        return dao.getNumberOfItems(userId);
     }
 
     @Override
@@ -29,12 +29,20 @@ public class SaleServiceImpl implements SaleService{
 	}
 
 	@Override
-	public void buyEpisodes(int userId) {
-		int totalPrice = dao.getTotalPrice(userId);
+	public void buyEpisodes(int userId, int[] episodeIds) throws Exception {
+		int totalPrice = dao.getTotalPrice(episodeIds);
+		int balance = dao.getBalance(userId);
+		if(totalPrice > balance) {
+			throw new Exception("Not enough Balance");
+		}
 		dao.subtractSand(userId, totalPrice);
-		int[] episodeIds = dao.getCartEpisodeIds(userId);
 		dao.addToLibrary(userId, episodeIds);
-		dao.clearCart(userId);
+		dao.clearCart(userId, episodeIds);
+	}
+
+	@Override
+	public int getBalance(int id) {
+		return dao.getBalance(id);
 	}
 	
 	

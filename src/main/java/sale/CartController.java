@@ -1,5 +1,6 @@
 package sale;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -33,10 +35,12 @@ public class CartController {
 		
 		int id = 5;
 		
-		int cnt = service.getNumberOfItems();
+		int cnt = service.getNumberOfItems(id);
         List<ItemDTO> items = service.getCartItems(id);
+        int balance = service.getBalance(id);
         mv.addObject("cnt", cnt);
         mv.addObject("items", items);
+        mv.addObject("balance", balance);
         mv.setViewName("cart");
         return mv;
 	}
@@ -57,9 +61,9 @@ public class CartController {
 		
 	}
 	
-	@ResponseBody
 	@PostMapping("/buy")
-	public boolean buyEpisodes(HttpSession session) {
+	public String buyEpisodes(HttpSession session,
+							HttpServletRequest request) {
 		//String userId = (String)session.getAttribute("id");
 		/*
 		if(userId == null) {
@@ -68,8 +72,15 @@ public class CartController {
 		}
 		*/
 		int userId = 5;
-		service.buyEpisodes(userId);
-		return true;
+		String[] strEpisodeIds = request.getParameterValues("toBuy");
+		int[] episodeIds = Arrays.stream(strEpisodeIds).mapToInt(Integer::parseInt).toArray();
+		
+		try {
+			service.buyEpisodes(userId, episodeIds);
+		} catch (Exception e) {
+			return "redirect:/cart";
+		}
+		return "redirect:/mypage";
 	}
 		
 }

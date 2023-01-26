@@ -67,7 +67,7 @@ public class NovelServiceImpl implements NovelService{
 		return dao.updateViewCount(id);
 	}
 
-	@Override
+  @Override
 	public void insertCart(int user_id, Integer episode_id) {
 		dao.insertCart(user_id, episode_id);
 	}
