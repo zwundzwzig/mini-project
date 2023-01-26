@@ -29,12 +29,11 @@ public class SaleServiceImpl implements SaleService{
 	}
 
 	@Override
-	public void buyEpisodes(int userId) {
-		int totalPrice = dao.getTotalPrice(userId);
+	public void buyEpisodes(int userId, int[] episodeIds) {
+		int totalPrice = dao.getTotalPrice(episodeIds);
 		dao.subtractSand(userId, totalPrice);
-		int[] episodeIds = dao.getCartEpisodeIds(userId);
 		dao.addToLibrary(userId, episodeIds);
-		dao.clearCart(userId);
+		dao.clearCart(userId, episodeIds);
 	}
 	
 	

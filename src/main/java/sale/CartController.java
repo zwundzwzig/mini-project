@@ -1,5 +1,6 @@
 package sale;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -57,9 +59,9 @@ public class CartController {
 		
 	}
 	
-	@ResponseBody
 	@PostMapping("/buy")
-	public boolean buyEpisodes(HttpSession session) {
+	public String buyEpisodes(HttpSession session,
+							HttpServletRequest request) {
 		//String userId = (String)session.getAttribute("id");
 		/*
 		if(userId == null) {
@@ -68,8 +70,11 @@ public class CartController {
 		}
 		*/
 		int userId = 5;
-		service.buyEpisodes(userId);
-		return true;
+		String[] strEpisodeIds = request.getParameterValues("toBuy");
+		int[] episodeIds = Arrays.stream(strEpisodeIds).mapToInt(Integer::parseInt).toArray();
+		
+		service.buyEpisodes(userId, episodeIds);
+		return "redirect:/mypage";
 	}
 		
 }

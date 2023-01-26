@@ -10,38 +10,41 @@
 <body>
 	<h1>장바구니</h1>
 	<h1>총 <span id="totalCount">${ cnt }</span>개</h1>
-	<table>
-		<thead>
-			<tr>
-				<th>선택</th>
-				<th>소설제목</th>
-				<th>회차</th>
-				<th>회차제목</th>
-				<th>가격</th>
-				<th>삭제</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${ items }" var="item">
-				<tr id="${ item.id }">
-					<td><input type="checkbox" id="ch${ item.id }" class="rowCheckbox" data-item-id="${ item.id }" checked="checked"></td>
-					<td>${ item.novelTitle }</td>
-					<td>${ item.sequence }</td>
-					<td>${ item.episodeTitle }</td>
-					<td class="price" id="price${ item.id }">${ item.price }</td>
-					<td><input type="button" class="delete" data-item-id="${ item.id }" value="삭제"></td>
+	<form action="/buy" method="post">
+		<table>
+			<thead>
+				<tr>
+					<th>선택</th>
+					<th>소설제목</th>
+					<th>회차</th>
+					<th>회차제목</th>
+					<th>가격</th>
+					<th>삭제</th>
 				</tr>
-			</c:forEach>
-		</tbody>
-		<tfoot>
-			<tr>
-				<th scope="row" colspan="4" >선택된 작품의 total</th>
-				<td id="total"></td>
-			</tr>
-		</tfoot>
-	</table>
+			</thead>
+			<tbody>
+				<c:forEach items="${ items }" var="item">
+					<tr id="${ item.id }">
+						<td><input type="checkbox" id="ch${ item.id }" name="toBuy" value="${ item.episodeId }" class="rowCheckbox" data-item-id="${ item.id }" checked="checked"></td>
+						<td>${ item.novelTitle }</td>
+						<td>${ item.sequence }</td>
+						<td>${ item.episodeTitle }</td>
+						<td class="price" id="price${ item.id }">${ item.price }</td>
+						<td><input type="button" class="delete" data-item-id="${ item.id }" value="삭제"></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+			<tfoot>
+				<tr>
+					<th scope="row" colspan="4" >선택된 작품의 total</th>
+					<td id="total"></td>
+				</tr>
+			</tfoot>
+		</table>
+		<input type="submit" value="결제하기">
+	</form>
 	
-	<input type="button" id="buy" value="결제하기">
+	
 	
 	<script src="/resources/js/jquery-3.6.1.min.js"></script>
 	<script>
