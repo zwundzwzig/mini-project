@@ -18,7 +18,7 @@
     FROM libraries l
            JOIN episodes e ON l.episode_id = e.id
            JOIN novels n ON e.novel_id = n.id
-    WHERE l.user_id = 1;
+    WHERE l.user_id = #{userId};
   </select>
 
   <select id="oneMember" parameterType="String" resultType="userdto">
