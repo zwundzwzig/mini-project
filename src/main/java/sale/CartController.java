@@ -48,13 +48,9 @@ public class CartController {
     @ResponseBody
     @DeleteMapping("/cart")
     public boolean deleteCartItem(HttpSession session, int id) {
-        //String userId = (String)session.getAttribute("id");
-		/*
-		if(loginId == null) {
-			mv.setViewName("/login");
-			return mv;
+    	if(session.getAttribute("loginid") == null) {
+			return false;
 		}
-		*/
 
         service.deleteCartItem(id);
         return true;
