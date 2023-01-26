@@ -28,18 +28,18 @@
 		select * from novels
 	</sql>
 
-	<select id="searchSimple" resultType="noveldto"  parameterType="noveldto">
-		<include refid="search" />
+	<select id="searchSimple" resultType="noveldto" parameterType="noveldto">
+		<include refid="search"/>
 		<where>
 			<choose>
 				<when test="title != null and title != ''">
-					title=#{title}
+					title like '%#{title}%'
 				</when>
 				<when test="author != null and author != ''">
-					author=#{author}
+					author like '%#{author}%'
 				</when>
 				<when test="genre != null and genre != ''">
-					genre=#{genre}
+					genre like '%#{genre}%'
 				</when>
 			</choose>
 		</where>

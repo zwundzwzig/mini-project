@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <title>team4-bookstore</title>
     <script src="resources/js/jquery-3.6.1.min.js"></script>
+    <link href="resources/css/main/searchResult.css" rel="stylesheet">
 </head>
 <body>
 <!-- 상단바  -->
