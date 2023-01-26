@@ -55,16 +55,30 @@
 	
 	<select id="getNovelList" resultType="episodesdto" parameterType="int">
 		select * from episodes where novel_id=#{id} 
-					order by id limit #{limit}, 3
+					order by id limit #{limit}, 7
 	</select>
-	
-	<insert id="insertCart" parameterType="map">
-		insert into carts (user_id, episode_id) values (#{user_id}, #{episode_id)
-	</insert>
 	
 	<update id="updateViewCount" parameterType="int">
 		update novels set viewcount=viewcount+1 where id=#{id}
 	</update>
+	
+	<insert id="insertCart" parameterType="int">
+		insert into carts (user_id, episode_id) values (#{user_id}, #{episode_id})
+	</insert>
+	
+	<insert id="insertLibraries" parameterType="int">
+		insert into libraries (user_id, episode_id) values (#{user_id}, #{episode_id})
+	</insert>
+	
+	<update id="updateSand" parameterType="int">
+		update users set sand = sand-#{novel_cnt} where id=#{user_id}
+	</update>
+	
+	<select id="getLibraries" resultType="int" parameterType="int">
+		SELECT episode_id FROM libraries 
+		WHERE user_id=#{user_id}
+	</select>
+	
 </mapper>
 
 

@@ -20,22 +20,44 @@ $(document).ready(function(){
 		}
 	});
 	
-	/* 체크된 내용 장바구니 넘기기 */
-// 	$("#cart").click(function(){
-		
-// 	});
+	//체크된 소설 장바구니 넘기기
+	$("#cart").click(function(e){
+		var chk = confirm("장바구니?");
+		if(chk){
+			alert("담았다리");
+			$("form").attr("action","/cartIn");
+// 			document.getElementById("f").submit();
+		}else{
+			e.preventDefault();
+		}
+	});
+	
+	$("#buy").click(function(e){
+		var chk = confirm("구매하시겠습니까?");
+		if(chk){
+			alert("구매되었습니다.");
+			$("form").attr("action","/buyNow");
+		}else{
+			e.preventDefault();
+		}
+	});
 	
 });
+
 </script>
 <style type="text/css">
 #detail{
 width: 63%; height: 430px; float:right;
 }
 #check{
-width:10px;
+width:53px;
 }
 #first_tr{
 border: 1px solid grey;
+background-color: #f5f5dc;
+}
+#second_tr{
+height: 32px;
 }
 #page{
 width:100%;
@@ -45,6 +67,11 @@ text-align: center;
 width:20px;
 height:18px;
 }
+#btn{
+width: auto;
+height: auto;
+text-align: center;
+}
 table{
 border:1px solid grey; 
 border-collapse: collapse; 
@@ -53,6 +80,9 @@ text-align: center;
 } 
 b{
 color:#012A5E;
+}
+#b2{
+color:#055375;
 }
 #title{
 width: 25%; height: 400px; float:left;
@@ -65,15 +95,16 @@ width: 25%; height: 400px; float:left;
     <jsp:param value="false" name="login"/>
 </jsp:include>
 
-<!-- 웹소설 표지 -->
-<form action="<%=request.getContextPath() %>/cart">
+<!-- 웹소설 표지 /cart -->
+<form action="<%=request.getContextPath() %>" id="f" method="post">
 <img id="title" src="resources/images/novel/${dto.id}.jpg">
 
 <!-- 웹소설 설명란 -->
 <div id="detail"> 
 <br><br><h1> ${dto.title} </h1>
 <b>연재중&nbsp;&nbsp;|&nbsp;&nbsp;작가 ${dto.author}&nbsp;&nbsp;|&nbsp;&nbsp;${dto.genre }
-		&nbsp;&nbsp;|&nbsp;&nbsp;${dto.indate }&nbsp;&nbsp;|&nbsp;&nbsp;조회수 ${dto.viewcount}</b>
+		&nbsp;&nbsp;|&nbsp;&nbsp;${dto.indate }&nbsp;&nbsp;|
+		&nbsp;&nbsp;조회수 ${dto.viewcount}&nbsp;&nbsp;|&nbsp;&nbsp;좋아요&nbsp;&nbsp;</b>
 <hr /><br><br>
 ${dto.description}
 <br><br><br><br><br><br><hr /><br><br>
@@ -81,6 +112,7 @@ ${dto.description}
 </div>  
 <div id="blank" style="clear:both;"></div>
  
+<input type="hidden" value="2" name="user_id">
 <!-- 에피소드 목록 -->
 <table>
 <tr id="first_tr">
@@ -92,20 +124,29 @@ ${dto.description}
 
 <!-- 에피소드 출력 -->
 <c:forEach items="${list}" var="epi">
-	<tr><td>${epi.sequence }화</td><td>${epi.title }</td><td>모래 ${epi.price }알</td>
-			<td><input type="checkbox" name="check"></td></tr>
+	<tr id="second_tr"><td>${epi.sequence }화 ${epi.id }</td><td>${epi.title }</td><td>모래 ${epi.price }알</td>
+		<td>
+			<c:if test="${epi.price !=0}">
+				<input type="checkbox" name="check" value="${epi.id}">
+			</c:if>
+			<c:if test="${epi.price ==0}">
+				<b id="b2"><c:out value="소장중"></c:out></b>
+			</c:if>
+		</td>
+	
+	</tr>
 </c:forEach>
 </table>
-<%-- <input type="hidden" value="${list.id}" name="novel_id"> --%>
+
 <!-- 페이징 -->
 <div id="page">
 <%
 int totalCnt = (int)request.getAttribute("cnt");
 int totalPage = 0;
-if(totalCnt % 3 == 0){
-	totalPage = totalCnt / 3;
+if(totalCnt % 7 == 0){
+	totalPage = totalCnt / 7;
 }else{
-	totalPage = totalCnt /3 + 1;
+	totalPage = totalCnt /7 + 1;
 }
 for(int i=1;i<=totalPage;i++){
 %>
@@ -117,7 +158,6 @@ for(int i=1;i<=totalPage;i++){
 
 <!-- 장바구니, 구매 버튼 -->
 <div id="btn">
-<input type="hidden" value="1" name="user_id">
 <input type="submit" value="장바구니 담기" id="cart" name="cart">
 <input type="submit" value="구매" id="buy" name="buy">
 </div>
