@@ -62,10 +62,15 @@
 		
 		$(".rowCheckbox").change(function(){
 			let oldNum = Number($("#total").text());
+			let oldCount = Number($("#totalCount").text());
 			if($(this).is(":checked")){
 				var newNum = oldNum + Number($("#price"+this.dataset.itemId).text());
+				let newCount = oldCount + 1;
+				$("#totalCount").text(newCount);
 			}else{
 				var newNum = oldNum - Number($("#price"+this.dataset.itemId).text());
+				let newCount = oldCount - 1;
+				$("#totalCount").text(newCount);
 			}
 			$("#total").text(newNum);
 		});
