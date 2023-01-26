@@ -12,4 +12,6 @@ public interface UserDAO {
     public List<ItemDTO> getPurchases(int userId);
 
     public UserDTO oneMember(String nickname);
+    public int joinuser(UserDTO dto);
+
 }

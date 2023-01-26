@@ -4,7 +4,65 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Insert title here</title>
+    <title>🦊회원가입🦊</title>
+    <style type="text/css">
+      body {
+        margin: 0;
+        position: relative;
+      }
+
+      .main {
+        position: relative;
+        margin: 0 auto;
+        background-color: rgb(240, 240, 240);
+        height: 380px;
+      }
+
+      .main .lower {
+        position: relative;
+        display: grid;
+        justify-content: center;
+        width: 90%;
+        top: 30px;
+        bottom: 30px;
+        padding: 20px 10px 20px 10px;
+        margin: 0 auto;
+        border: 2px solid #012A5E;
+        background-color: white;
+        text-align: center;
+      }
+
+      tr, th{
+        padding: 10px;
+      }
+
+      .main .lower input[type=submit] {
+        height: 30px;
+        border-radius: 5px;
+        background: #012A5E;
+        color: white;
+        cursor: pointer;
+      }
+
+      .main .lower input[type=submit]:hover {
+        border-color: lightslategray;
+        background: lightslategray;
+      }
+
+      .main .lower input[type=reset] {
+        height: 30px;
+        border-radius: 5px;
+        background: #012A5E;
+        color: white;
+        cursor: pointer;
+      }
+
+      .main .lower input[type=reset]:hover {
+        border-color: lightslategray;
+        background: lightslategray;
+      }
+
+    </style>
 </head>
 <body>
 <!-- 상단바  -->
@@ -12,44 +70,32 @@
     <jsp:param value="false" name="login"/>
 </jsp:include>
 
-<!-- html form(파라미터이름)--MemberDTO(프로퍼티이름)--MEMBER테이블(컬럼이름)저장 -->
-<form action="<%=request.getContextPath() %>/memberinsert"
-      enctype="multipart/form-data" method="POST">
-    <table>
-        <tr>
-            <th><label for="id"> jsp아이디 입력 : </label></th>
-            <td><input type="text" id="id" name="id" required></td>
-        </tr>
-        <tr>
-            <th><label for="pw"> 비번 입력 : </label></th>
-            <td><input type="password" id="pw" name="pw" required></td>
-        </tr>
-        <tr>
-            <th><label for="name"> 이름 입력 : </label></th>
-            <td><input type="text" id="name" name="name" required></td>
-        </tr>
-        <tr>
-            <th><label for="phone"> 번호 입력 : </label></th>
-            <td><input type="text" id="phone" name="phone" value="010" required></td>
-        </tr>
-        <tr>
-            <th><label for="email"> 이메일 입력 : </label></th>
-            <td><input type="email" id="email" name="email" value="??@sba.com" required></td>
-        </tr>
-        <tr>
-            <th><label for="address"> 주소 입력 : </label></th>
-            <td><input type="text" id="address" name="address" required></td>
-        </tr>
-        <tr>
-            <th><label for="imagefile"> 사진 선택 : </label></th>
-            <td><input type="file" id=imagefile" name="imagefile"></td>
-        </tr>
-        <tr>
-            <th><input type="submit" value="회원가입"></th>
-            <td><input type="reset" value="취소"></td>
-        </tr>
-    </table>
-</form>
+<main class="main">
+    <div class="lower">
+        <h1>회원가입🦊</h1>
+        <form action="<%=request.getContextPath() %>/join" enctype="multipart/form-data"
+              method="POST">
+            <table>
+                <tr>
+                    <th><label for="nickname">닉네임 입력 : </label></th>
+                    <td><input type="text" id="nickname" name="nickname" required></td>
+                </tr>
+                <tr>
+                    <th><label for="password"> 비밀번호 입력 : </label></th>
+                    <td><input type="password" id="password" name="password" required></td>
+                </tr>
+                <tr>
+                    <th><label for="age"> 나이 입력 : </label></th>
+                    <td><input type="text" id="age" name="age" required></td>
+                </tr>
+                <tr>
+                    <th><input type="submit" value="회원가입"></th>
+                    <td><input type="reset" value="취소"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</main>
 
 <jsp:include page="../footer.jsp"/>
 

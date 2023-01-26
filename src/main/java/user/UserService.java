@@ -9,4 +9,5 @@ public interface UserService {
 
     public UserDTO oneMember(String nickname);
 
+    public int joinuser(UserDTO dto);
 }

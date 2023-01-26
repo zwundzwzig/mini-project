@@ -21,4 +21,8 @@ public class UserServiceImpl implements UserService {
         return dao.oneMember(nickname);
     }
 
+    public int joinuser(UserDTO dto) {
+        return dao.joinuser(dto);
+    }
+
 }
