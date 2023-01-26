@@ -25,15 +25,15 @@ public class CartController {
 	@GetMapping("/cart")
 	public ModelAndView cart(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		//String userId = (String)session.getAttribute("id");
-		/*
-		if(loginId == null) {
+		Integer id = (Integer)session.getAttribute("loginid");
+		
+		if(id == null) {
 			mv.setViewName("/login");
 			return mv;
 		}
-		*/
 		
-		int id = 5;
+		
+		//int id = 5;
 		
 		int cnt = service.getNumberOfItems(id);
         List<ItemDTO> items = service.getCartItems(id);

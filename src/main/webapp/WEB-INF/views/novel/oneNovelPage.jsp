@@ -112,28 +112,35 @@ ${dto.description}
 </div>  
 <div id="blank" style="clear:both;"></div>
  
-<input type="hidden" value="2" name="user_id">
+
 <!-- 에피소드 목록 -->
 <table>
 <tr id="first_tr">
-<td style="width:55px;">몇 화?</td>
+<td style="width:55px;">회차</td>
 <td style="width:70%;">제목</td>
-<td>가격</td>
 <td id="check"><input type="checkbox" id="all" name="all"></td>
+<td>가격</td>
 </tr>
 
 <!-- 에피소드 출력 -->
 <c:forEach items="${list}" var="epi">
-	<tr id="second_tr"><td>${epi.sequence }화 ${epi.id }</td><td>${epi.title }</td><td>모래 ${epi.price }알</td>
+	<tr id="second_tr"><td>${epi.sequence }화 ${epi.id }</td><td>${epi.title }</td>
 		<td>
 			<c:if test="${epi.price !=0}">
 				<input type="checkbox" name="check" value="${epi.id}">
 			</c:if>
 			<c:if test="${epi.price ==0}">
-				<b id="b2"><c:out value="소장중"></c:out></b>
+				<b id="b2"><c:out value="소장중"/></b>
 			</c:if>
 		</td>
-	
+	<td>
+		<c:if test="${epi.price ==0}">
+			<c:out value="-"/>
+		</c:if>
+		<c:if test="${epi.price !=0}">
+			<c:out value="모래 ${epi.price }알"/>
+		</c:if>
+	</td>
 	</tr>
 </c:forEach>
 </table>
@@ -158,6 +165,8 @@ for(int i=1;i<=totalPage;i++){
 
 <!-- 장바구니, 구매 버튼 -->
 <div id="btn">
+<input type="hidden" value="${dto.id}" name="id">
+<input type="hidden" value=<%=session.getAttribute("loginid") %> name="user_id">
 <input type="submit" value="장바구니 담기" id="cart" name="cart">
 <input type="submit" value="구매" id="buy" name="buy">
 </div>
