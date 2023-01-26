@@ -89,6 +89,10 @@
 		        	let oldNum = Number($("#total").text());
 		        	var newNum = oldNum - Number($("#price"+e.target.dataset.itemId).text());
 		        	$("#total").text(newNum);
+		        	
+		        	let oldCount = Number($("#totalCount").text());
+		        	let newCount = oldCount - 1;
+		        	$("#totalCount").text(newCount);
 		        }
 		    	 $("#"+e.target.dataset.itemId).remove();
 		      })
