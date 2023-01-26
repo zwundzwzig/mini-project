@@ -13,6 +13,8 @@
     <script>
       /* 체크박스 전체 선택 */
       $(document).ready(function(){
+    	${errorMsg}
+    	  
         $("#all").click(function(){
           if($("#all").prop("checked")){
             $("input:checkbox[name='check']").prop("checked", true);

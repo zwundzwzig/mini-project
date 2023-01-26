@@ -6,9 +6,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Insert title here</title>
+    <style>
+		form, h1 {
+		  text-align: center;
+		}
+		table{
+			    margin-left: auto;
+			    margin-right: auto;
+		}
+		
+	</style>
 </head>
 <body>
+<!-- 상단바  -->
+<jsp:include page="header.jsp">
+    <jsp:param value="false" name="login"/>
+</jsp:include>
 <h1>장바구니</h1>
+<c:if test="${empty items }">
+	<h1>장바구니가 텅~텅~ 비어있어요</h1>
+</c:if>
+
+<c:if test="${ not empty items }">
 <h1>총 <span id="totalCount">${ cnt }</span>개</h1>
 <form action="/buy" method="post">
     <table>
@@ -51,8 +70,8 @@
     <div id="balanceWarning"></div>
     <input type="submit" id="buy" value="결제하기">
 </form>
-
-
+</c:if>
+<jsp:include page="footer.jsp"/>
 <script src="/resources/js/jquery-3.6.1.min.js"></script>
 <script>
   function updateTotalPrice() {

@@ -62,7 +62,9 @@
 	</update>
 	
 	<insert id="insertCart" parameterType="int">
-		insert into carts (user_id, episode_id) values (#{user_id}, #{episode_id})
+		insert into carts (user_id, episode_id) 
+		select #{user_id}, #{episode_id} from dual 
+		where not exists (select episode_id from carts where user_id=#{user_id} and episode_id=#{episode_id})
 	</insert>
 	
 	<insert id="insertLibraries" parameterType="int">

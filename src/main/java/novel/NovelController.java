@@ -1,4 +1,5 @@
 package novel;
+import java.util.Arrays;
 import java.util.List;
 import episodes.EpisodesDTO;
 import jakarta.servlet.http.HttpServletRequest;
@@ -68,20 +69,17 @@ public class NovelController {
 		return mv;
 	}
 	@PostMapping("/buyNow")
-	public String buyNovel(Integer[] check, HttpServletRequest request) {
+	public ModelAndView buyNovel(int[] check, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 		int id = Integer.parseInt(request.getParameter("id")); //epi_id
 		int user_id = Integer.parseInt(request.getParameter("user_id"));
-		int novel_cnt = check.length * 2;
-		for (Integer episode_id : check) {
-			service.insertLibraries(user_id, episode_id);
+		try {
+			saleService.buyEpisodes(user_id, check);
+		} catch (Exception e) {
+			mv.setViewName("redirect:/oneNovelPage?id=" + id + "&page=1");
+			return mv;
 		}
-		service.updateSand(novel_cnt, user_id);
-// try {
-// saleService.buyEpisodes(user_id, check);
-// } catch (Exception e) {
-// return "redirect:/cart";
-// }
-		return "redirect:/oneNovelPage?id=" + id + "&page=1";
+		mv.setViewName("redirect:/oneNovelPage?id=" + id + "&page=1");
+		return mv;
 	}
 }
