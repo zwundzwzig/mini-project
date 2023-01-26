@@ -55,14 +55,16 @@ body {
   margin: 12px 0 5px 0;
 }
 
-.main .lower .categoryList .category .item .description{
+.main .lower .categoryList .category .item .description {
   width: 100%;
 }
-.main .lower .categoryList .category .item .description .novel_name{
-  margin-top:3px;
+
+.main .lower .categoryList .category .item .description .novel_name {
+  margin-top: 3px;
   font-weight: 600;
 }
-.main .lower .categoryList .category .item .description .title{
-  margin-top:3px;
+
+.main .lower .categoryList .category .item .description .title {
+  margin-top: 3px;
   font-size: 14px;
 }

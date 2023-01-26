@@ -1,6 +1,7 @@
 package main;
 
 public class NovelDTO {
+
     String title, author, genre, description, indate;
     int id, liked, viewcount;
     boolean adult;

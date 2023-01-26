@@ -1,14 +1,13 @@
 package sale;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 @Service("saleservice")
 @Transactional
-public class SaleServiceImpl implements SaleService{
+public class SaleServiceImpl implements SaleService {
 
     @Autowired
     SaleDAO dao;
@@ -23,28 +22,27 @@ public class SaleServiceImpl implements SaleService{
         return dao.getCartItems(id);
     }
 
-	@Override
-	public void deleteCartItem(int id) {
-		dao.deleteCartItem(id);
-	}
+    @Override
+    public void deleteCartItem(int id) {
+        dao.deleteCartItem(id);
+    }
 
-	@Override
-	public void buyEpisodes(int userId, int[] episodeIds) throws Exception {
-		int totalPrice = dao.getTotalPrice(episodeIds);
-		int balance = dao.getBalance(userId);
-		if(totalPrice > balance) {
-			throw new Exception("Not enough Balance");
-		}
-		dao.subtractSand(userId, totalPrice);
-		dao.addToLibrary(userId, episodeIds);
-		dao.clearCart(userId, episodeIds);
-	}
+    @Override
+    public void buyEpisodes(int userId, int[] episodeIds) throws Exception {
+        int totalPrice = dao.getTotalPrice(episodeIds);
+        int balance = dao.getBalance(userId);
+        if (totalPrice > balance) {
+            throw new Exception("Not enough Balance");
+        }
+        dao.subtractSand(userId, totalPrice);
+        dao.addToLibrary(userId, episodeIds);
+        dao.clearCart(userId, episodeIds);
+    }
 
-	@Override
-	public int getBalance(int id) {
-		return dao.getBalance(id);
-	}
-	
-	
-    
+    @Override
+    public int getBalance(int id) {
+        return dao.getBalance(id);
+    }
+
+
 }
