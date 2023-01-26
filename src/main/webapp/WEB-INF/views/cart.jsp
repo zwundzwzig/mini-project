@@ -23,6 +23,11 @@
     <jsp:param value="false" name="login"/>
 </jsp:include>
 <h1>장바구니</h1>
+<c:if test="${empty items }">
+	<h1>장바구니가 텅~텅~ 비어있어요</h1>
+</c:if>
+
+<c:if test="${ not empty items }">
 <h1>총 <span id="totalCount">${ cnt }</span>개</h1>
 <form action="/buy" method="post">
     <table>
@@ -65,7 +70,7 @@
     <div id="balanceWarning"></div>
     <input type="submit" id="buy" value="결제하기">
 </form>
-
+</c:if>
 <jsp:include page="footer.jsp"/>
 <script src="/resources/js/jquery-3.6.1.min.js"></script>
 <script>
