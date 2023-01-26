@@ -8,6 +8,10 @@
     <title>Insert title here</title>
 </head>
 <body>
+<!-- 상단바  -->
+<jsp:include page="header.jsp">
+    <jsp:param value="false" name="login"/>
+</jsp:include>
 <h1>장바구니</h1>
 <h1>총 <span id="totalCount">${ cnt }</span>개</h1>
 <form action="/buy" method="post">
@@ -52,7 +56,7 @@
     <input type="submit" id="buy" value="결제하기">
 </form>
 
-
+<jsp:include page="footer.jsp"/>
 <script src="/resources/js/jquery-3.6.1.min.js"></script>
 <script>
   function updateTotalPrice() {

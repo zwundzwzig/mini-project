@@ -8,6 +8,10 @@
     <title>마이페이지</title>
 </head>
 <body>
+<!-- 상단바  -->
+<jsp:include page="header.jsp">
+    <jsp:param value="false" name="login"/>
+</jsp:include>
 <h1>내 서재</h1>
 <table>
     <thead>
@@ -27,7 +31,7 @@
     </c:forEach>
     </tbody>
 </table>
-
+<jsp:include page="footer.jsp"/>
 <script src="/resources/js/jquery-3.6.1.min.js"></script>
 <script>
 </script>
