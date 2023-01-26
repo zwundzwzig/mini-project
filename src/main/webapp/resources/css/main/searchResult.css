@@ -1,0 +1,68 @@
+@charset "UTF-8";
+
+body {
+  margin: 0;
+  position: relative;
+}
+
+.main {
+  position: relative;
+  margin: 0 auto;
+  background-color: rgb(240, 240, 240);
+  height: 1000px;
+}
+
+.main .lower {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  top: 30px;
+  bottom: 30px;
+  padding: 20px 10px 20px 10px;
+  margin: 0 auto;
+  border: 2px solid #012A5E;
+  background-color: white;
+}
+
+.main .lower .categoryList {
+  width: 90%;
+  max-height: 900px;
+}
+
+.main .lower .categoryList .category {
+  border-radius: 5px;
+  margin-bottom: 30px;
+  padding: 20px 15px 10px 15px;
+}
+
+.main .lower .categoryList .top {
+  font-size: 25px;
+  padding-bottom: 20px;
+}
+
+.main .lower .categoryList .category .item {
+  float: left;
+  width: 200px;
+  min-height: 220px;
+  flex-flow: wrap;
+  text-align: center;
+}
+
+.main .lower .categoryList .category .item img {
+  width: 100px;
+  height: 150px;
+  margin: 12px 0 5px 0;
+}
+
+.main .lower .categoryList .category .item .description{
+  width: 100%;
+}
+.main .lower .categoryList .category .item .description .novel_name{
+  margin-top:3px;
+  font-weight: 600;
+}
+.main .lower .categoryList .category .item .description .title{
+  margin-top:3px;
+  font-size: 14px;
+}

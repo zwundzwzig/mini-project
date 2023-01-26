@@ -8,14 +8,25 @@
     <title>Insert title here</title>
     <script src="resources/js/jquery-3.6.1.min.js"></script>
     <link href="resources/css/header.css" rel="stylesheet">
+    <script>
+      $(document).ready(function () {
+        $('#search').click(function (e) {
+          if ($('#keyword').val() == "") {
+            e.preventDefault()
+            alert("검색어를 입력해주세요!")
+            return false;
+          }
+        })
+      });
+    </script>
 </head>
 <body>
 <header class="header">
     <nav class="nav">
         <div class="menu">
             <%
-                String login = request.getParameter("login");
-                if (login.equals("true")) {%>
+                if (session.getAttribute("loginid") != null) {%>
+            <a class="a" href="/"> ${nickname } 님 환영합니다!</a>
             <a class="a" href="/cart">장바구니</a>
             <a class="a" href="/mypage">내서재</a>
             <a class="a" href="/logout">로그아웃</a>
@@ -36,8 +47,8 @@
                     <option value="author">저자</option>
                     <option value="genre">장르</option>
                 </select>
-                <input type="text" placeholder="검색어 입력" name="keyword">
-                <button type="submit">검색</button>
+                <input type="text" placeholder="검색어 입력" name="keyword" id="keyword">
+                <button type="submit" id="search">검색</button>
             </form>
         </div>
     </nav>

@@ -11,4 +11,5 @@ import sale.ItemDTO;
 @Repository
 public interface UserDAO {
 	public List<ItemDTO> getPurchases(int userId);
+	public UserDTO oneMember(String nickname);
 }

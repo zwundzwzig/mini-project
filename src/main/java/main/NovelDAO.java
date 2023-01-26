@@ -19,6 +19,7 @@ public interface NovelDAO {
 	public NovelDTO getOneNovel(int id);
 	public int getTotalNovel(int id); 
 	public List<EpisodesDTO> getNovelList(@Param("id")int id, @Param("limit")int limit);
+  //public void insertCart(Map<Object, Object> map);
 	public int updateViewCount(int id);
 	public void insertCart(@Param("user_id")int user_id, @Param("episode_id")Integer episode_id);
 	public void insertLibraries(@Param("user_id")int user_id, @Param("episode_id")Integer episode_id);

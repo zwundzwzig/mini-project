@@ -62,7 +62,6 @@ public class NovelServiceImpl implements NovelService{
 		return dao.getNovelList(id, limit);
 	}
 
-
 	@Override
 	public int updateViewCount(int id) {
 		return dao.updateViewCount(id);
