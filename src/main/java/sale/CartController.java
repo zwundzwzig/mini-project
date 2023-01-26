@@ -35,7 +35,7 @@ public class CartController {
 		
 		int id = 5;
 		
-		int cnt = service.getNumberOfItems();
+		int cnt = service.getNumberOfItems(id);
         List<ItemDTO> items = service.getCartItems(id);
         int balance = service.getBalance(id);
         mv.addObject("cnt", cnt);

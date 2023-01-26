@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface SaleDAO {
 
-    public int getNumberOfItems();
+    public int getNumberOfItems(int userId);
     public List<ItemDTO> getCartItems(int id);
 	public void deleteCartItem(int id);
 	public int getTotalPrice(int[] episodeIds);
