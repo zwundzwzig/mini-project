@@ -4,46 +4,76 @@
 
 <mapper namespace="main.NovelDAO">
 
-	<select id="getNumberOfNovels" resultType="map">
-		SELECT genre, COUNT(*) AS cnt FROM novels GROUP BY genre
+  <select id="getNumberOfNovels" resultType="map">
+    SELECT genre, COUNT(*) AS cnt
+    FROM novels
+    GROUP BY genre
+  </select>
+
+
+  <select id="getNewNovels" resultType="noveldto">
+    SELECT *
+    FROM novels
+    ORDER BY indate DESC LIMIT #{limit}, 4
+  </select>
+
+  <select id="getRomanceNovels" resultType="noveldto">
+    SELECT *
+    FROM novels
+    WHERE genre = "로맨스/로판"
+    ORDER BY viewcount DESC LIMIT #{limit}, 4
+  </select>
+
+  <select id="getFantasyNovels" resultType="noveldto">
+    SELECT *
+    FROM novels
+    WHERE genre = "판타지/무협"
+    ORDER BY viewcount DESC LIMIT #{limit}, 4
+  </select>
+
+  <select id="getBLNovels" resultType="noveldto">
+    SELECT *
+    FROM novels
+    WHERE genre = "BL"
+    ORDER BY viewcount DESC LIMIT #{limit}, 4
+  </select>
+
+	<select id="searchSimple" resultType="noveldto" parameterType="noveldto">
+		select * from novels where
+		<if test="title != null and title != ''"> title like CONCAT("%",#{title },"%")</if>
+		<if test="author != null and author != ''"> author like CONCAT("%",#{author },"%")</if>
+		<if test="genre != null and genre != ''"> genre like CONCAT("%",#{genre },"%")</if>
 	</select>
 
-	<select id="getNewNovels" resultType="noveldto">
-		SELECT * FROM novels ORDER BY indate DESC LIMIT #{limit}, 4
-	</select>
+  <select id="getOneNovel" resultType="noveldto" parameterType="int">
+    select *
+    from novels
+    where id = #{id}
+  </select>
 
-	<select id="getRomanceNovels" resultType="noveldto">
-		SELECT * FROM novels WHERE genre = "로맨스/로판" ORDER BY viewcount DESC LIMIT  #{limit},4
-	</select>
+  <select id="getTotalNovel" resultType="int" parameterType="int">
+    select count(*)
+    from episodes
+    where novel_id = #{novel_id}
+  </select>
 
-	<select id="getFantasyNovels" resultType="noveldto">
-		SELECT * FROM novels WHERE genre = "판타지/무협" ORDER BY viewcount DESC LIMIT  #{limit},4
-	</select>
+  <select id="getNovelList" resultType="episodesdto" parameterType="int">
+    select *
+    from episodes
+    where novel_id = #{id}
+    order by id limit #{limit}, 3
+  </select>
 
-	<select id="getBLNovels" resultType="noveldto">
-		SELECT * FROM novels WHERE genre = "BL" ORDER BY viewcount DESC LIMIT  #{limit},4
-	</select>
+  <insert id="insertCart" parameterType="map">
+    insert into carts (user_id, episode_id)
+    values (#{user_id}, #{episode_id)
+  </insert>
 
-	<sql id="search">
-		select * from novels
-	</sql>
-
-	<select id="searchSimple" resultType="noveldto"  parameterType="noveldto">
-		<include refid="search" />
-		<where>
-			<choose>
-				<when test="title != null and title != ''">
-					title=#{title}
-				</when>
-				<when test="author != null and author != ''">
-					author=#{author}
-				</when>
-				<when test="genre != null and genre != ''">
-					genre=#{genre}
-				</when>
-			</choose>
-		</where>
-	</select>
+  <update id="updateViewCount" parameterType="int">
+    update novels
+    set viewcount=viewcount + 1
+    where id = #{id}
+  </update>
 
 	<select id="getOneNovel" resultType="noveldto" parameterType="int">
 		select * from novels where id=#{id}
@@ -55,16 +85,30 @@
 	
 	<select id="getNovelList" resultType="episodesdto" parameterType="int">
 		select * from episodes where novel_id=#{id} 
-					order by id limit #{limit}, 3
+					order by id limit #{limit}, 7
 	</select>
-	
-	<insert id="insertCart" parameterType="map">
-		insert into carts (user_id, episode_id) values (#{user_id}, #{episode_id)
-	</insert>
 	
 	<update id="updateViewCount" parameterType="int">
 		update novels set viewcount=viewcount+1 where id=#{id}
 	</update>
+	
+	<insert id="insertCart" parameterType="int">
+		insert into carts (user_id, episode_id) values (#{user_id}, #{episode_id})
+	</insert>
+	
+	<insert id="insertLibraries" parameterType="int">
+		insert into libraries (user_id, episode_id) values (#{user_id}, #{episode_id})
+	</insert>
+	
+	<update id="updateSand" parameterType="int">
+		update users set sand = sand-#{novel_cnt} where id=#{user_id}
+	</update>
+	
+	<select id="getLibraries" resultType="int" parameterType="int">
+		SELECT episode_id FROM libraries 
+		WHERE user_id=#{user_id}
+	</select>
+	
 </mapper>
 
 
