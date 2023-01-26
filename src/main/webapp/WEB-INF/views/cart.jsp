@@ -6,6 +6,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Insert title here</title>
+    <style>
+		form, h1 {
+		  text-align: center;
+		}
+		table{
+			    margin-left: auto;
+			    margin-right: auto;
+		}
+		
+	</style>
 </head>
 <body>
 <!-- 상단바  -->

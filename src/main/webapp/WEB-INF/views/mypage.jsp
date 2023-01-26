@@ -6,6 +6,15 @@
 <head>
     <meta charset="UTF-8">
     <title>마이페이지</title>
+    <style>
+		h1 {
+		  text-align: center;
+		}
+		table{
+			    margin-left: auto;
+			    margin-right: auto;
+		}
+	</style>
 </head>
 <body>
 <!-- 상단바  -->
