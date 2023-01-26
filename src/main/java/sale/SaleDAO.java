@@ -18,5 +18,6 @@ public interface SaleDAO {
 	public void subtractSand(@Param("userId") int userId, @Param("totalPrice") int totalPrice);
 	public void addToLibrary(@Param("userId") int userId, @Param("episodeIds") int[] episodeIds);
 	public void clearCart(@Param("userId") int userId, @Param("episodeIds") int[] episodeIds);
+	public int getBalance(int id);
 
 }

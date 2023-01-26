@@ -8,5 +8,6 @@ public interface SaleService {
     public List<ItemDTO> getCartItems(int id);
 	public void deleteCartItem(int id);
 	public void buyEpisodes(int userId, int[] episodeIds);
+	public int getBalance(int id);
 
 }

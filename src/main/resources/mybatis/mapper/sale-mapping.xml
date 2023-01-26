@@ -56,5 +56,11 @@
 		</foreach>
 	</delete>
 	
+	<select id="getBalance" resultType="int">
+		select sand
+		from users
+		where id=#{id}
+	</select>
+	
 </mapper>
 

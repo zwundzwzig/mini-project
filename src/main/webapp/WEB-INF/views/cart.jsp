@@ -40,8 +40,14 @@
 					<td id="total"></td>
 				</tr>
 			</tfoot>
+			
 		</table>
-		<input type="submit" value="결제하기">
+		
+		<h1>결제 후 잔액</h1>
+		<span id="balance">${ balance }</span>(현재 잔액) - <span id="total2">0</span>(구매 예정)
+		= <span id="futureBalance"></span>(예정 잔액)
+		<div id="balanceWarning"></div>
+		<input type="submit" id="buy" value="결제하기">
 	</form>
 	
 	
@@ -55,13 +61,29 @@
 					, 0);
 			
 			$("#total").html(totalPrice);
+			$("#total2").text(totalPrice);
 		}
 		
 		function updateTotalCount(){
 			$("#totalCount").html($("tbody>tr").length);
 		}
 		
+		
+		
+		function calculateFutureBalance(){
+			let newNum = Number($("#balance").text()) - Number($("#total2").text());
+			$("#futureBalance").text(newNum);
+			if(newNum < 0){
+				$("#buy").prop("disabled", true);
+				$("#balanceWarning").text("잔액이 부족합니다.");
+			}else{
+				$("#buy").prop("disabled", false);
+				$("#balanceWarning").text("");
+			}
+		}
+		
 		updateTotalPrice();
+		calculateFutureBalance();
 		
 		$(".rowCheckbox").change(function(){
 			let oldNum = Number($("#total").text());
@@ -76,6 +98,8 @@
 				$("#totalCount").text(newCount);
 			}
 			$("#total").text(newNum);
+			$("#total2").text(newNum);
+			calculateFutureBalance();
 		});
 		
 		$(".delete").on("click", function(e){
@@ -89,15 +113,16 @@
 		        	let oldNum = Number($("#total").text());
 		        	var newNum = oldNum - Number($("#price"+e.target.dataset.itemId).text());
 		        	$("#total").text(newNum);
+		        	$("#total2").val(newNum);
 		        	
 		        	let oldCount = Number($("#totalCount").text());
 		        	let newCount = oldCount - 1;
 		        	$("#totalCount").text(newCount);
+		        	calculateFutureBalance();
 		        }
 		    	 $("#"+e.target.dataset.itemId).remove();
 		      })
 		    });
-		
 		
 		
 		 

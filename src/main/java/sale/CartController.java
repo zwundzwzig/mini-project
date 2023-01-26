@@ -37,8 +37,10 @@ public class CartController {
 		
 		int cnt = service.getNumberOfItems();
         List<ItemDTO> items = service.getCartItems(id);
+        int balance = service.getBalance(id);
         mv.addObject("cnt", cnt);
         mv.addObject("items", items);
+        mv.addObject("balance", balance);
         mv.setViewName("cart");
         return mv;
 	}

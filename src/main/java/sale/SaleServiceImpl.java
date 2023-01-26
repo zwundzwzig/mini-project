@@ -35,6 +35,11 @@ public class SaleServiceImpl implements SaleService{
 		dao.addToLibrary(userId, episodeIds);
 		dao.clearCart(userId, episodeIds);
 	}
+
+	@Override
+	public int getBalance(int id) {
+		return dao.getBalance(id);
+	}
 	
 	
     
