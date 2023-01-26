@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sale.SaleDAO">
+
+	<select id="getNumberOfItems" resultType="int">
+		select count(*) from carts
+	</select>
+
+	<select id="getCartItems" parameterType="int" resultType="saledto">
+		SELECT c.id AS id , n.title AS novelTitle, e.sequence AS sequence, e.title AS episodeTitle, e.price as price
+		from carts c JOIN episodes e ON c.episode_id = e.id
+		JOIN novels n ON e.novel_id=n.id
+		where c.user_id=#{id}
+	</select>
+	
+	<select id="getCartEpisodeIds" parameterType="int" resultType="int">
+		select episode_id from carts
+		where user_id = #{userId}
+	</select>
+	
+	<delete id="deleteCartItem" parameterType="int">
+		delete from carts
+		where id=#{id}
+	</delete>
+	
+	<select id="getTotalPrice" parameterType="int" resultType="int">
+		SELECT SUM(price)
+		FROM carts c JOIN episodes e ON c.episode_id=e.id
+		WHERE c.user_id=#{user}
+	</select>
+	
+	<update id="subtractSand">
+		update users
+		set sand = sand - #{totalPrice}
+		where id = #{userId}
+	</update>
+	
+	<insert id="addToLibrary">
+		insert into libraries(user_id, episode_id) 
+		values 
+		<foreach item="episodeId" collection="episodeIds" separator=",">
+		 (#{userId}, #{episodeId})
+		</foreach> 
+	</insert>
+	
+	<delete id="clearCart">
+		delete from carts
+		where user_id=#{userId}
+	</delete>
+	
+</mapper>
+
