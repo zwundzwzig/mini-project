@@ -7,7 +7,21 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<a href="/viewer?episodeId=${ prevAndNext.prevId }">
+		이전화
+	</a>
+	<a href="/viewer?episodeId=${ prevAndNext.nextId }">
+		다음화
+	</a>
+	
 	${ contents }
+	
+	<a href="/viewer?episodeId=${ prevAndNext.prevId }">
+		이전화
+	</a>
+	<a href="/viewer?episodeId=${ prevAndNext.nextId }">
+		다음화
+	</a>
 	
 </body>
 </html>

@@ -10,5 +10,17 @@
 			on l.episode_id = e.id
 		where user_id=#{userId} and e.id=#{episodeId}
 	</select>
+	<select id="getSeqPrevAndNext" resultType="map">
+		select n.id as novelId, sequence - 1 as prevSeq, sequence + 1 as nextSeq 
+		from episodes e join novels n
+			on e.novel_id = n.id 
+		where e.id=#{episodeId}
+	</select>
+	<select id="getEpisodeId" parameterType="map" resultType="int">
+		select id
+		from episodes
+		where novel_id=#{novelId} and
+				sequence=#{sequence}
+	</select>
 </mapper>
 
