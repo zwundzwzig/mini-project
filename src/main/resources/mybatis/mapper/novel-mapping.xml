@@ -44,6 +44,42 @@
     <if test="genre != null and genre != ''">genre like CONCAT("%",#{genre },"%")</if>
   </select>
 
+<<<<<<< HEAD
+	<select id="getOneNovel" resultType="noveldto" parameterType="int">
+		select * from novels where id=#{id}
+	</select>
+	
+	<select id="getTotalNovel" resultType="int" parameterType="int">
+		select count(*) from episodes where novel_id=#{novel_id} 
+	</select> 
+	
+	<select id="getNovelList" resultType="episodesdto" parameterType="int">
+		select * from episodes where novel_id=#{id} 
+					order by id limit #{limit}, 7
+	</select>
+	
+	<update id="updateViewCount" parameterType="int">
+		update novels set viewcount=viewcount+1 where id=#{id}
+	</update>
+	
+	<insert id="insertCart" parameterType="int">
+		insert into carts (user_id, episode_id) values (#{user_id}, #{episode_id})
+	</insert>
+	
+	<insert id="insertLibraries" parameterType="int">
+		insert into libraries (user_id, episode_id) values (#{user_id}, #{episode_id})
+	</insert>
+	
+	<update id="updateSand" parameterType="int">
+		update users set sand = sand-#{novel_cnt} where id=#{user_id}
+	</update>
+	
+	<select id="getLibraries" resultType="int" parameterType="int">
+		SELECT episode_id FROM libraries 
+		WHERE user_id=#{user_id}
+	</select>
+	
+=======
   <select id="getOneNovel" resultType="noveldto" parameterType="int">
     select *
     from novels
@@ -91,6 +127,7 @@
     WHERE user_id = #{user_id}
   </select>
 
+>>>>>>> cdcb47a1369a8e6b32fe4ef965da4c1f3b12ded3
 </mapper>
 
 

@@ -1,6 +1,7 @@
 package user;
 
 import jakarta.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -65,6 +66,33 @@ public class UserController {
             session.removeAttribute("loginid");
         }
         return "redirect:/";
+    }
+
+    @GetMapping("/join")
+    public String userjoin() {
+        return "user/join";
+    }
+    @PostMapping("/join")
+    public ModelAndView userjoin(UserDTO dto) throws IOException {
+        ModelAndView mv = new ModelAndView();
+        UserDTO db_dto = service.oneMember(dto.getNickname());
+        String joinresult = "";
+        if(db_dto == null) {
+            int row = service.joinuser(dto);
+            if(row == 1) {
+                joinresult ="정상회원가입처리";
+            }
+            else {
+                joinresult ="회원가입처리오류발생";
+            }
+        }
+        else {
+            joinresult = "이미 사용중인 아이디입니다.";
+        }
+        mv.addObject("joinresult", joinresult);
+        mv.setViewName("user/memberinsert2");
+        return mv;
+
     }
 
 }

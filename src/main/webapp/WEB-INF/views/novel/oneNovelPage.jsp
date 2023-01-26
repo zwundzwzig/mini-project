@@ -6,43 +6,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>상세 페이지</title>
-    <script src="<%=request.getContextPath() %>resources/js/jquery-3.6.1.min.js"></script>
-    <script>
-      /* 체크박스 전체 선택 */
-      $(document).ready(function () {
-        $("#all").click(function () {
-          if ($("#all").prop("checked")) {
-            $("input[name=check]").prop("checked", true);
-          } else {
-            $("input[name=check]").prop("checked", false);
-          }
-        });
-
-        //체크된 소설 장바구니 넘기기
-        $("#cart").click(function (e) {
-          var chk = confirm("장바구니?");
-          if (chk) {
-            alert("담았다리");
-            $("form").attr("action", "/cartIn");
+<meta charset="UTF-8">
+<title>상세 페이지</title>
+<script src="<%=request.getContextPath() %>resources/js/jquery-3.6.1.min.js"></script>
+<script>
+/* 체크박스 전체 선택 */
+$(document).ready(function(){
+	$("#all").click(function(){
+		if($("#all").prop("checked")){
+			$("input[name=check]").prop("checked", true);
+		} else{
+			$("input[name=check]").prop("checked", false);
+		} 
+	});
+	
+	//체크된 소설 장바구니 넘기기
+	$("#cart").click(function(e){
+		var chk = confirm("장바구니?");
+		if(chk){
+			alert("담았다리");
+			$("form").attr("action","/cartIn");
 // 			document.getElementById("f").submit();
-          } else {
-            e.preventDefault();
-          }
-        });
-
-        $("#buy").click(function (e) {
-          var chk = confirm("구매하시겠습니까?");
-          if (chk) {
-            alert("구매되었습니다.");
-            $("form").attr("action", "/buyNow");
-          } else {
-            e.preventDefault();
-          }
-        });
-
-      });
+		}else{
+			e.preventDefault();
+		}
+	});
+	
+	$("#buy").click(function(e){
+		var chk = confirm("구매하시겠습니까?");
+		if(chk){
+			alert("구매되었습니다.");
+			$("form").attr("action","/buyNow");
+		}else{
+			e.preventDefault();
+		}
+	});
+	
+});
+   
 
     </script>
     <style type="text/css">
@@ -113,52 +114,51 @@
 <form action="<%=request.getContextPath() %>" id="f" method="post">
     <img id="title" src="resources/images/novel/${dto.id}.jpg">
 
-    <!-- 웹소설 설명란 -->
-    <div id="detail">
-        <br><br>
-        <h1> ${dto.title} </h1>
-        <b>연재중&nbsp;&nbsp;|&nbsp;&nbsp;작가 ${dto.author}&nbsp;&nbsp;|&nbsp;&nbsp;${dto.genre }
-            &nbsp;&nbsp;|&nbsp;&nbsp;${dto.indate }&nbsp;&nbsp;|
-            &nbsp;&nbsp;조회수 ${dto.viewcount}&nbsp;&nbsp;|&nbsp;&nbsp;좋아요&nbsp;&nbsp;</b>
-        <hr/>
-        <br><br>
-        ${dto.description}
-        <br><br><br><br><br><br>
-        <hr/>
-        <br><br>
-        <b>1화 소장: 모래 2알 <img id="sand" src="resources/images/sand.png"></b>
-    </div>
-    <div id="blank" style="clear:both;"></div>
+<!-- 웹소설 설명란 -->
+<div id="detail"> 
+<br><br><h1> ${dto.title} </h1>
+<b>연재중&nbsp;&nbsp;|&nbsp;&nbsp;작가 ${dto.author}&nbsp;&nbsp;|&nbsp;&nbsp;${dto.genre }
+		&nbsp;&nbsp;|&nbsp;&nbsp;${dto.indate }&nbsp;&nbsp;|
+		&nbsp;&nbsp;조회수 ${dto.viewcount}&nbsp;&nbsp;|&nbsp;&nbsp;좋아요&nbsp;&nbsp;</b>
+<hr /><br><br>
+${dto.description}
+<br><br><br><br><br><br><hr /><br><br>
+<b>1화 소장: 모래 2알 <img id="sand" src="resources/images/sand.png"></b>
+</div>  
+<div id="blank" style="clear:both;"></div>
+ 
+<input type="hidden" value="2" name="user_id">
+<!-- 에피소드 목록 -->
+<table>
+<tr id="first_tr">
+<td style="width:55px;">회차</td>
+<td style="width:70%;">제목</td>
+<td id="check"><input type="checkbox" id="all" name="all"></td>
+<td>가격</td>
+</tr>
 
-    <input type="hidden" value="2" name="user_id">
-    <!-- 에피소드 목록 -->
-    <table>
-        <tr id="first_tr">
-            <td style="width:55px;">몇 화?</td>
-            <td style="width:70%;">제목</td>
-            <td>가격</td>
-            <td id="check"><input type="checkbox" id="all" name="all"></td>
-        </tr>
-
-        <!-- 에피소드 출력 -->
-        <c:forEach items="${list}" var="epi">
-            <tr id="second_tr">
-                <td>${epi.sequence }화 ${epi.id }</td>
-                <td>${epi.title }</td>
-                <td>모래 ${epi.price }알</td>
-                <td>
-                    <c:if test="${epi.price !=0}">
-                        <input type="checkbox" name="check" value="${epi.id}">
-                    </c:if>
-                    <c:if test="${epi.price ==0}">
-                        <b id="b2"><c:out value="소장중"></c:out></b>
-                    </c:if>
-                </td>
-
-            </tr>
-        </c:forEach>
-    </table>
-
+<!-- 에피소드 출력 -->
+<c:forEach items="${list}" var="epi">
+	<tr id="second_tr"><td>${epi.sequence }화 ${epi.id }</td><td>${epi.title }</td>
+		<td>
+			<c:if test="${epi.price !=0}">
+				<input type="checkbox" name="check" value="${epi.id}">
+			</c:if>
+			<c:if test="${epi.price ==0}">
+				<b id="b2"><c:out value="소장중"/></b>
+			</c:if>
+		</td>
+	<td>
+		<c:if test="${epi.price ==0}">
+			<c:out value="-"/>
+		</c:if>
+		<c:if test="${epi.price !=0}">
+			<c:out value="모래 ${epi.price }알"/>
+		</c:if>
+	</td>
+	</tr>
+</c:forEach>
+</table>
     <!-- 페이징 -->
     <div id="page">
         <%
@@ -177,11 +177,13 @@
         %>
     </div>
 
-    <!-- 장바구니, 구매 버튼 -->
-    <div id="btn">
-        <input type="submit" value="장바구니 담기" id="cart" name="cart">
-        <input type="submit" value="구매" id="buy" name="buy">
-    </div>
+<!-- 장바구니, 구매 버튼 -->
+<div id="btn">
+<input type="hidden" value="${dto.id}" name="id">
+<input type="hidden" value=<%=session.getAttribute("loginid") %> name="user_id">
+<input type="submit" value="장바구니 담기" id="cart" name="cart">
+<input type="submit" value="구매" id="buy" name="buy">
+</div>
 </form>
 <jsp:include page="../footer.jsp"/>
 </body>

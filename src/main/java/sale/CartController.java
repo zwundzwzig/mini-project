@@ -19,7 +19,7 @@ public class CartController {
     @Autowired
     @Qualifier("saleservice")
     SaleService service;
-
+	
 
     @GetMapping("/cart")
     public ModelAndView cart(HttpSession session) {
@@ -51,11 +51,9 @@ public class CartController {
     	if(session.getAttribute("loginid") == null) {
 			return false;
 		}
-
-        service.deleteCartItem(id);
-        return true;
-
-    }
+		service.deleteCartItem(id);
+		return true;
+	}
 
     @PostMapping("/buy")
     public String buyEpisodes(HttpSession session,

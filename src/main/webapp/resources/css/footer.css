@@ -1,7 +1,8 @@
 .footer {
   position: relative;
-  height: 7vh;
+  height: 120px;
   background-color: #012A5E;
-  text-align: center;
-  color: white;
+  color: darkgray;
+  text-align: left;
+  padding: 30px;
 }

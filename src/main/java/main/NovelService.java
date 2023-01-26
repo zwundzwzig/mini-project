@@ -37,3 +37,4 @@ public interface NovelService {
     public List<NovelDTO> searchSimple(NovelDTO dto);
 
 }
+ 

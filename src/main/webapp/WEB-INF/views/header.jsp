@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Insert title here</title>
+    <title>🦊사막여우🦊</title>
     <script src="resources/js/jquery-3.6.1.min.js"></script>
     <link href="resources/css/header.css" rel="stylesheet">
     <script>

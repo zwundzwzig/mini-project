@@ -15,3 +15,4 @@ public interface SaleService {
     public int getBalance(int id);
 
 }
+ 

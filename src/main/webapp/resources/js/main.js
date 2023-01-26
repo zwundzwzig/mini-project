@@ -29,7 +29,7 @@ $(document).ready(function () {
 
   $('#newNovelR').on('click', function () {
     new_count += 1;
-    if (new_count === 23) {
+    if (new_count === 21) {
       new_count = 1;
     }
     document.getElementById("new_page").innerHTML = new_count + "페이지";
@@ -40,7 +40,7 @@ $(document).ready(function () {
   $('#newNovelL').on('click', function () {
     new_count -= 1;
     if (new_count === 0) {
-      new_count = 22;
+      new_count = 20;
     }
     document.getElementById("new_page").innerHTML = new_count + "페이지";
     $('#newNovel').html("");
@@ -71,7 +71,7 @@ $(document).ready(function () {
 
   $('#romanceNovelR').on('click', function () {
     romance_count += 1;
-    if (romance_count === 14) {
+    if (romance_count === 13) {
       romance_count = 1;
     }
     document.getElementById("romance_page").innerHTML = romance_count + "페이지";
@@ -82,7 +82,7 @@ $(document).ready(function () {
   $('#romanceNovelL').on('click', function () {
     romance_count -= 1;
     if (romance_count === 0) {
-      romance_count = 13;
+      romance_count = 12;
     }
     document.getElementById("romance_page").innerHTML = romance_count + "페이지";
     $('#romanceNovel').html("");
@@ -113,7 +113,7 @@ $(document).ready(function () {
 
   $('#fantasyNovelR').on('click', function () {
     fantasy_count += 1;
-    if (fantasy_count === 9) {
+    if (fantasy_count === 8) {
       fantasy_count = 1;
     }
     document.getElementById("fantasy_page").innerHTML = fantasy_count + "페이지";
@@ -124,7 +124,7 @@ $(document).ready(function () {
   $('#fantasyNovelL').on('click', function () {
     fantasy_count -= 1;
     if (fantasy_count === 0) {
-      fantasy_count = 8;
+      fantasy_count = 7;
     }
     document.getElementById("fantasy_page").innerHTML = fantasy_count + "페이지";
     $('#fantasyNovel').html("");
@@ -155,7 +155,7 @@ $(document).ready(function () {
 
   $('#BLNovelR').on('click', function () {
     BL_count += 1;
-    if (BL_count === 5) {
+    if (BL_count === 3) {
       BL_count = 1;
     }
     document.getElementById("BL_page").innerHTML = BL_count + "페이지";
@@ -166,7 +166,7 @@ $(document).ready(function () {
   $('#BLNovelL').on('click', function () {
     BL_count -= 1;
     if (BL_count === 0) {
-      BL_count = 4;
+      BL_count = 2;
     }
     document.getElementById("BL_page").innerHTML = BL_count + "페이지";
     $('#BLNovel').html("");
