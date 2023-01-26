@@ -7,6 +7,7 @@
     <title>🦊사막여우🦊</title>
     <script src="resources/js/jquery-3.6.1.min.js"></script>
     <link href="resources/css/main.css" rel="stylesheet">
+    <link href="resources/css/style.css" rel="stylesheet">
     <script src="resources/js/main.js"></script>
 </head>
 <body>
@@ -17,7 +18,24 @@
 <main class="main">
     <section class="upper">
         <div class="advertisement">
-            <!-- 아직 사진 미완 :) -->
+            <!-- 이미지 슬라이드 부분 -->
+            <div id="slideShow">
+                <ul class="slides">
+                    <li><img src="resources/images/novel/a1.jpg" alt="" width="900px"></li>
+                    <li><img src="resources/images/novel/a2.jpg" alt="" width="900px"></li>
+                    <li><img src="resources/images/novel/a3.jpg" alt="" width="900px"></li>
+                    <li><img src="resources/images/novel/a4.jpg" alt="" width="900px"></li>
+                    <li><img src="resources/images/novel/a5.jpg" alt="" width="900px"></li>
+                    <li><img src="resources/images/novel/a6.jpg" alt="" width="900px"></li>
+                </ul>
+                <p class="controller">
+                    <!-- &lang: 왼쪽 방향 화살표
+                    &rang: 오른쪽 방향 화살표 -->
+                    <span class="prev">&lang;</span>
+                    <span class="next">&rang;</span>
+                </p>
+            </div>
+            <script src="resources/js/slideShow.js"></script>
         </div>
     </section>
     <section class="lower">
