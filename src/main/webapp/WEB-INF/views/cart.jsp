@@ -11,9 +11,26 @@
 		  text-align: center;
 		}
 		table{
+			    table-layout: fixed;
+			    width:100%;
 			    margin-left: auto;
 			    margin-right: auto;
+		      	border-collapse: collapse;
+  				border: 1px solid grey;
 		}
+		tfoot tr{
+			height: 64px;
+			background-color: #F5F5DC;
+			border: 1px solid grey;
+		}
+		thead tr{
+        	background-color: #F5F5DC;
+        	border: 1px solid grey;
+		}
+		tbody tr{
+			height: 32px;
+		}
+
 		
 	</style>
 </head>
@@ -37,7 +54,7 @@
             <th>소설제목</th>
             <th>회차</th>
             <th>회차제목</th>
-            <th>가격</th>
+            <th>가격(모래알)</th>
             <th>삭제</th>
         </tr>
         </thead>
@@ -57,8 +74,9 @@
         </tbody>
         <tfoot>
         <tr>
-            <th scope="row" colspan="4">선택된 작품의 total</th>
+            <th scope="row" colspan="4">선택된 작품의 총 가격</th>
             <td id="total"></td>
+            <th></th>
         </tr>
         </tfoot>
 
