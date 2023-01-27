@@ -37,8 +37,8 @@
 
   <select id="getTotalPrice" parameterType="int" resultType="int">
     SELECT SUM(price)
-    FROM carts c JOIN episodes e ON c.episode_id=e.id
-    WHERE e.id in
+    FROM episodes
+    WHERE id in
     <foreach collection="episodeIds" item="episodeId" open="(" separator="," close=")">
       #{episodeId}
     </foreach>
