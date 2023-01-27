@@ -20,13 +20,13 @@ public class UserController {
 
     @GetMapping("/mypage")
     public ModelAndView showMyPage(HttpSession session) {
-    	ModelAndView mv = new ModelAndView();
-    	
-    	 if(session.getAttribute("loginid") == null) {
- 			mv.setViewName("user/login");
- 			return mv;
- 		}
-         Integer userId = (Integer)session.getAttribute("loginid");
+        ModelAndView mv = new ModelAndView();
+
+        if (session.getAttribute("loginid") == null) {
+            mv.setViewName("user/login");
+            return mv;
+        }
+        Integer userId = (Integer) session.getAttribute("loginid");
 
         List<ItemDTO> purchases = service.getPurchases(userId);
         mv.addObject("purchases", purchases);
@@ -61,7 +61,6 @@ public class UserController {
 
     @GetMapping("/logout")
     public String logout(HttpSession session) {
-        System.out.println(session.getAttribute("loginid"));
         if (session.getAttribute("loginid") != null) {
             session.removeAttribute("loginid");
         }
@@ -72,24 +71,22 @@ public class UserController {
     public String userjoin() {
         return "user/join";
     }
+
     @PostMapping("/join")
     public ModelAndView userjoin(UserDTO dto, HttpSession session) throws IOException {
         ModelAndView mv = new ModelAndView();
         UserDTO db_dto = service.oneMember(dto.getNickname());
         String joinresult = "";
-        if(db_dto == null) {
+        if (db_dto == null) {
             int row = service.joinuser(dto);
-            if(row == 1) {
-                joinresult ="정상회원가입처리";
+            if (row == 1) {
+                joinresult = "정상회원가입처리";
+            } else {
+                joinresult = "회원가입처리오류발생";
             }
-            else {
-                joinresult ="회원가입처리오류발생";
-            }
-        }
-        else {
+        } else {
             joinresult = "이미 사용중인 아이디입니다.";
         }
-        mv.addObject("joinresult", joinresult);
         session.setAttribute("loginid", dto.getId());
         session.setAttribute("nickname", dto.getNickname());
         mv.setViewName("redirect:/");

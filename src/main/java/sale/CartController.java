@@ -19,19 +19,18 @@ public class CartController {
     @Autowired
     @Qualifier("saleservice")
     SaleService service;
-	
+
 
     @GetMapping("/cart")
     public ModelAndView cart(HttpSession session) {
         ModelAndView mv = new ModelAndView();
-        
-        if(session.getAttribute("loginid") == null) {
-			mv.setViewName("user/login");
-			return mv;
-		}
-        
-        Integer userId = (Integer)session.getAttribute("loginid");
-		
+
+        if (session.getAttribute("loginid") == null) {
+            mv.setViewName("user/login");
+            return mv;
+        }
+
+        Integer userId = (Integer) session.getAttribute("loginid");
 
         int id = 5;
 
@@ -48,21 +47,21 @@ public class CartController {
     @ResponseBody
     @DeleteMapping("/cart")
     public boolean deleteCartItem(HttpSession session, int id) {
-    	if(session.getAttribute("loginid") == null) {
-			return false;
-		}
-		service.deleteCartItem(id);
-		return true;
-	}
+        if (session.getAttribute("loginid") == null) {
+            return false;
+        }
+        service.deleteCartItem(id);
+        return true;
+    }
 
     @PostMapping("/buy")
     public String buyEpisodes(HttpSession session,
         HttpServletRequest request) {
-    	if(session.getAttribute("loginid") == null) {
-			return "user/login";
-		}
-        
-        Integer userId = (Integer)session.getAttribute("loginid");
+        if (session.getAttribute("loginid") == null) {
+            return "user/login";
+        }
+
+        Integer userId = (Integer) session.getAttribute("loginid");
         String[] strEpisodeIds = request.getParameterValues("toBuy");
         int[] episodeIds = Arrays.stream(strEpisodeIds).mapToInt(Integer::parseInt).toArray();
 
