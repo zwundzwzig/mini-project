@@ -73,7 +73,7 @@ public class UserController {
         return "user/join";
     }
     @PostMapping("/join")
-    public ModelAndView userjoin(UserDTO dto) throws IOException {
+    public ModelAndView userjoin(UserDTO dto, HttpSession session) throws IOException {
         ModelAndView mv = new ModelAndView();
         UserDTO db_dto = service.oneMember(dto.getNickname());
         String joinresult = "";
@@ -90,7 +90,9 @@ public class UserController {
             joinresult = "이미 사용중인 아이디입니다.";
         }
         mv.addObject("joinresult", joinresult);
-        mv.setViewName("user/memberinsert2");
+        session.setAttribute("loginid", dto.getId());
+        session.setAttribute("nickname", dto.getNickname());
+        mv.setViewName("redirect:/");
         return mv;
 
     }
