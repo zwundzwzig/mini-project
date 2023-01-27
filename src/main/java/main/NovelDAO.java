@@ -27,8 +27,7 @@ public interface NovelDAO {
 
     public void insertCart(@Param("user_id") int user_id, @Param("episode_id") Integer episode_id);
 
-    public void insertLibraries(@Param("user_id") int user_id,
-        @Param("episode_id") Integer episode_id);
+    public void insertLibraries(@Param("user_id") int user_id, @Param("episode_id") Integer episode_id);
 
     public void updateSand(@Param("novel_cnt") int novel_cnt, @Param("user_id") int user_id);
 
