@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Insert title here</title>
+    <title>장바구니</title>
     <style>
 		form, h1 {
 		  text-align: center;
