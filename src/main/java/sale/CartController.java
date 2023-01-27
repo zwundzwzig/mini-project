@@ -30,10 +30,7 @@ public class CartController {
             return mv;
         }
 
-        Integer userId = (Integer) session.getAttribute("loginid");
-
-        int id = 5;
-
+        int userId = (int)session.getAttribute("loginid");
         int cnt = service.getNumberOfItems(userId);
         List<ItemDTO> items = service.getCartItems(userId);
         int balance = service.getBalance(userId);

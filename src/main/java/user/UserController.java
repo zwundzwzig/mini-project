@@ -75,23 +75,12 @@ public class UserController {
     @PostMapping("/join")
     public ModelAndView userjoin(UserDTO dto, HttpSession session) throws IOException {
         ModelAndView mv = new ModelAndView();
+        int row = service.joinuser(dto); //회원가입 되면 1 저장
         UserDTO db_dto = service.oneMember(dto.getNickname());
-        String joinresult = "";
-        if (db_dto == null) {
-            int row = service.joinuser(dto);
-            if (row == 1) {
-                joinresult = "정상회원가입처리";
-            } else {
-                joinresult = "회원가입처리오류발생";
-            }
-        } else {
-            joinresult = "이미 사용중인 아이디입니다.";
-        }
-        session.setAttribute("loginid", dto.getId());
+        session.setAttribute("loginid", db_dto.getId());
         session.setAttribute("nickname", dto.getNickname());
         mv.setViewName("redirect:/");
         return mv;
-
     }
 
 }
