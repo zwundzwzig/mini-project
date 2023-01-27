@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Insert title here</title>
+    <title>장바구니</title>
     <style>
 		form, h1 {
 		  text-align: center;
@@ -30,7 +30,36 @@
 		tbody tr{
 			height: 32px;
 		}
+		input[type=button] {
+        height: 30px;
+        border-radius: 5px;
+        background: #012A5E;
+        color: white;
+        cursor: pointer;
+      	}
 
+      	input[type=button]:hover {
+        border-color: lightslategray;
+        background: lightslategray;
+      	}
+      	
+      	input[type=submit] {
+        height: 30px;
+        border-radius: 5px;
+        background: #012A5E;
+        color: white;
+        cursor: pointer;
+      	}
+
+      	input[type=submit]:hover {
+        border-color: lightslategray;
+        background: lightslategray;
+      	}
+      	
+      	input[type=submit]:disabled{
+      	border-color: grey;
+        background: grey;
+      	}
 		
 	</style>
 </head>
@@ -109,11 +138,13 @@
   function calculateFutureBalance() {
     let newNum = Number($("#balance").text()) - Number($("#total2").text());
     $("#futureBalance").text(newNum);
-    if (newNum < 0) {
+    if (newNum < 0 || Number($("#total2").text()) == 0) {
       $("#buy").prop("disabled", true);
+      $("#buy").val("결제불가");
       $("#balanceWarning").text("잔액이 부족합니다.");
     } else {
       $("#buy").prop("disabled", false);
+      $("#buy").val("결제");
       $("#balanceWarning").text("");
     }
   }
