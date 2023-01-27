@@ -25,5 +25,10 @@
     where novel_id = #{novelId}
       and sequence = #{sequence}
   </select>
+  <select id="getNovelId" resultType="int">
+  	select novel_id
+  	from episodes
+  	where id=#{episodeId}
+  </select>
 </mapper>
 

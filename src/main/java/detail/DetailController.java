@@ -27,9 +27,11 @@ public class DetailController {
          Integer userId = (Integer)session.getAttribute("loginid");
         int episodeId = Integer.valueOf(request.getParameter("episodeId"));
         String contents = service.getContents(episodeId, userId);
-
+        int novelId = service.getNovelId(episodeId);
+        mv.addObject("novelId", novelId);
+        
         if (contents == null) {
-            mv.addObject("contents", "구매한 작품이 아닙니다.");
+            mv.addObject("contents", "구매한 작품이 아닙니다.<a href='/oneNovelPage?id=" + novelId + "&page=1'>구매하러 가기</a>");
         } else {
             mv.addObject("contents", contents);
         }
