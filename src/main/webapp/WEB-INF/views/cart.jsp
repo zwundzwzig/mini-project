@@ -141,7 +141,9 @@
     if (newNum < 0 || Number($("#total2").text()) == 0) {
       $("#buy").prop("disabled", true);
       $("#buy").val("결제불가");
-      $("#balanceWarning").text("잔액이 부족합니다.");
+      if(newNum < 0){
+      	$("#balanceWarning").text("잔액이 부족합니다.");
+      }
     } else {
       $("#buy").prop("disabled", false);
       $("#buy").val("결제");
