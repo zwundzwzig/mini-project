@@ -16,8 +16,8 @@ $(document).ready(function () {
         for (let i = 0; i < data.length; i++) {
           var imgpath = "resources/images/novel/" + data[i].id + ".jpg";
           var description = "<div class='description'>"
-              + "<div class='book_name'><a href='productdetail/" + data[i].id
-              + "'>" + data[i].id + "</a></div>"
+              + "<div class='book_name'><a href='oneNovelPage?id=" + data[i].id
+              + "&page=1" + "'>" + data[i].id + "</a></div>"
               + "<div class='writer'>" + data[i].title + "</div></div>";
           $("#newNovel").append(
               "<div class='item'><img src = " + imgpath + ">" + description
@@ -58,8 +58,8 @@ $(document).ready(function () {
         for (let i = 0; i < data.length; i++) {
           var imgpath = "resources/images/novel/" + data[i].id + ".jpg";
           var description = "<div class='description'>"
-              + "<div class='book_name'><a href='productdetail/" + data[i].id
-              + "'>" + data[i].id + "</a></div>"
+              + "<div class='book_name'><a href='oneNovelPage?id=" + data[i].id
+              + "&page=1" + "'>" + data[i].id + "</a></div>"
               + "<div class='writer'>" + data[i].title + "</div></div>";
           $("#romanceNovel").append(
               "<div class='item'><img src = " + imgpath + ">" + description
@@ -100,8 +100,8 @@ $(document).ready(function () {
         for (let i = 0; i < data.length; i++) {
           var imgpath = "resources/images/novel/" + data[i].id + ".jpg";
           var description = "<div class='description'>"
-              + "<div class='book_name'><a href='productdetail/" + data[i].id
-              + "'>" + data[i].id + "</a></div>"
+              + "<div class='book_name'><a href='oneNovelPage?id=" + data[i].id
+              + "&page=1" + "'>" + data[i].id + "</a></div>"
               + "<div class='writer'>" + data[i].title + "</div></div>";
           $("#fantasyNovel").append(
               "<div class='item'><img src = " + imgpath + ">" + description
@@ -142,8 +142,8 @@ $(document).ready(function () {
         for (let i = 0; i < data.length; i++) {
           var imgpath = "resources/images/novel/" + data[i].id + ".jpg";
           var description = "<div class='description'>"
-              + "<div class='book_name'><a href='productdetail/" + data[i].id
-              + "'>" + data[i].id + "</a></div>"
+              + "<div class='book_name'><a href='oneNovelPage?id=" + data[i].id
+              + "&page=1" + "'>" + data[i].id + "</a></div>"
               + "<div class='writer'>" + data[i].title + "</div></div>";
           $("#BLNovel").append(
               "<div class='item'><img src = " + imgpath + ">" + description
