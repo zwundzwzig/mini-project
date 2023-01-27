@@ -11,8 +11,20 @@
 		  text-align: center;
 		}
 		table{
+			    table-layout: fixed;
+			    width:100%;
 			    margin-left: auto;
 			    margin-right: auto;
+		      	border-collapse: collapse;
+  				border: 1px solid grey;
+  				text-align: center;
+		}
+		thead tr{
+        	background-color: #F5F5DC;
+        	border: 1px solid grey;
+		}
+		tbody tr{
+			height: 32px;
 		}
 	</style>
 </head>
@@ -45,6 +57,8 @@
     </c:forEach>
     </tbody>
 </table>
+<br>
+<br>
 </c:if>
 <jsp:include page="footer.jsp"/>
 <script src="/resources/js/jquery-3.6.1.min.js"></script>

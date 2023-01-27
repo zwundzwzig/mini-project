@@ -32,5 +32,12 @@ public class DetailServiceImpl implements DetailService {
 
     }
 
+	@Override
+	public int getNovelId(int episodeId) {
+		return dao.getNovelId(episodeId);
+	}
+    
+    
+
 
 }

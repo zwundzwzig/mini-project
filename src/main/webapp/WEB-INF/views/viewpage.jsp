@@ -10,9 +10,18 @@
 		 p {
 		  text-align: center;
 		}
-		a{
-			    margin-left: auto;
-			    margin-right: auto;
+		table{
+			table-layout: fixed;
+			width:100%;
+			text-align:center
+		}
+		#mypage{
+			text-align:center;
+		}
+		#contents{
+			width: 80%;
+			margin-left: auto;
+			margin-right: auto;
 		}
 	</style>
 </head>
@@ -20,30 +29,48 @@
 <jsp:include page="viewerheader.jsp">
     <jsp:param value="false" name="login"/>
 </jsp:include>
-	<a href="/mypage">내서재로 가기</a><br>
+	<p id="toMypage">
+		<a href="/mypage">내서재로 가기</a><br>
+	</p>
+	<table>
+	<tr>
+	<td>
 	<c:if test="${not empty prevAndNext.prevId}">
-		<a href="/viewer?episodeId=${ prevAndNext.prevId }">
+		<a href="/viewer?episodeId=${ prevAndNext.prevId }" class="prev">
 		    이전화
 		</a>
 	</c:if>
+	</td>
+	<td>
 	<c:if test="${not empty prevAndNext.nextId}">
-		<a href="/viewer?episodeId=${ prevAndNext.nextId }">
+		<a href="/viewer?episodeId=${ prevAndNext.nextId }" class="next">
 		    다음화
 		</a>
 	</c:if>
+	</td>
+	</tr>
+	</table>
 	<br>
-	<p>${ contents }</p>
+	<p id="contents">${ contents }<p>
 	<br>
+		<table>
+	<tr>
+	<td>
 	<c:if test="${not empty prevAndNext.prevId}">
-		<a href="/viewer?episodeId=${ prevAndNext.prevId }">
+		<a href="/viewer?episodeId=${ prevAndNext.prevId }" class="prev">
 		    이전화
 		</a>
 	</c:if>
+	</td>
+	<td>
 	<c:if test="${not empty prevAndNext.nextId}">
-		<a href="/viewer?episodeId=${ prevAndNext.nextId }">
+		<a href="/viewer?episodeId=${ prevAndNext.nextId }" class="next">
 		    다음화
 		</a>
 	</c:if>
+	</td>
+	</tr>
+	</table>
 <jsp:include page="footer.jsp"/>
 </body>
 </html>

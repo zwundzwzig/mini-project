@@ -16,4 +16,6 @@ public interface DetailDAO {
 
     public Integer getEpisodeId(@Param("novelId") int novelId, @Param("sequence") int sequence);
 
+	public int getNovelId(int episodeId);
+
 }
