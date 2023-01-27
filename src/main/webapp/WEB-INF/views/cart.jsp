@@ -30,7 +30,18 @@
 		tbody tr{
 			height: 32px;
 		}
+		input[type=button] {
+        height: 30px;
+        border-radius: 5px;
+        background: #012A5E;
+        color: white;
+        cursor: pointer;
+      	}
 
+      	input[type=button]:hover {
+        border-color: lightslategray;
+        background: lightslategray;
+      	}
 		
 	</style>
 </head>
