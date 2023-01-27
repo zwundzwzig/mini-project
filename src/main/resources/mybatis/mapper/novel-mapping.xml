@@ -79,7 +79,6 @@
 		SELECT episode_id FROM libraries 
 		WHERE user_id=#{user_id}
 	</select>
-
 </mapper>
 
 

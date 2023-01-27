@@ -55,7 +55,11 @@
         	}
         });
 
-        
+        //순서 정렬
+//         $("#orderby").click(function(){
+//         	alert('${list}')
+//         	$("form").attr("action","/orderBy");
+//         });
         
       });
     </script>
@@ -70,7 +74,7 @@
       }
       #first_tr {
         border: 1px solid grey;
-        background-color: #F5F5DC;
+        background-color: #F7F5EB;
       }
       #second_tr {
         height: 32px;
@@ -80,6 +84,7 @@
         height: 30px;
         text-align: center;
       }
+      /* 모래 아이콘 */
       #sand {
         width: 20px;
         height: 18px;
@@ -97,14 +102,17 @@
         height: 425px;
         float: left;
       }
+      /* 좋아요 버튼 */
       #like{
       	width:30px;
       	height: 30px;
       }
-      #liked_img{
+      /* 좋아요 이미지*/
+      #liked_img{ 
       	width:21px;
       	height: 25px;
       }
+      /* 소설목록 테이블 */
       table { 
         border: 1px solid grey;
         border-collapse: collapse;
@@ -114,17 +122,43 @@
       b {
         color: #012A5E;
       }
-      
-      #h{
-      width:30px;
+      /* 공지 글 */
+      #h{ 
+      width:77px;
       text-align: center;
       }
+      /* 접은 글 */
+      #show{ 
+      width:44px;
+      text-align: center;
+      
+      color: red;
+      }
+      /* 공지 빨간색 칸 디자인*/
 	.BookDetailNotice_List_Header-notices {
 	    background: #fce8e6;
 	    color: #ed6d5e;}
-      #cart, #buy{
-        border-color: lightslategray;
-        background: lightslategray;
+	  /* 장바구니, 구매 버튼 */
+      #cart, #buy{ 
+      border-radius:5px;
+        border-color: #f0f0f0;
+        background: #e3e3e3;
+      }
+      #xxx{
+      color:red;
+      }
+      #review_title{
+      margin-left: 20px;
+      text-align: left;
+      }
+      #second_tbl_tr{
+      border: 1px solid grey;
+      }
+      #review_submit{
+      text-align: right;
+      }
+      #edit{
+      padding-top: 20px;
       }
     </style>
 </head>
@@ -149,15 +183,21 @@
         <br><br>
         <div>
         <h4 class="BookDetailNotice_List_Header BookDetailNotice_List_Header-notices" id="h">
-        공지</h4></div>
+        &lt;공지&gt;</h4></div>
         <div>
         본 작품은 12세 미만의 청소년이 열람하기에 부적절한 내용을 포함하고 있습니다. 보호자의 지도 하에 작품을 감상해주시기 바랍니다.</div>
+        
         <br><hr /><br>
         <b>1화 소장: 모래 2알 <img id="sand" src="resources/images/sand.png"></b>
     </div>
+
     <div id="blank" style="clear:both;"></div>
     <!-- 에피소드 목록 -->
     <h4>총 회차 ${cnt}화</h4>
+<%--     <input type="hidden" value="${list.sequence}" name="sequence"> --%>
+<%--     <input type="hidden" value="${list.novel_id}" name="novel_id"> --%>
+<!--     <input type="submit" name="orderby" id="orderby" value="신간부터"> -->
+    
     <table>
         <tr id="first_tr">
             <td style="width:55px;">회차</td>
@@ -221,7 +261,22 @@
             }
         %>
     </div>
+    <div>
+    <table>
+    <tr id="second_tbl_tr"><td><h3 id="review_title">리뷰창</h3></td></tr>
+    <tr><td>작성자</td><td>내용</td><td>작성시간</td></tr>
+    <tr><td>dd</td><td>소설 재밌다.</td><td>2023.01.27 11:39</td></tr>
+    <div>
+    <tr>
+    <td></td>
+   	<td id="edit">
+    	<textarea id="input_review" cols="110" rows="3"></textarea></td><td><input type="submit" value="리뷰작성" id="review_submit"></td>
+    </tr>
+    </div>
+    </table>
+    </div>
 </form>
+<div id="blank" style="clear:both;"></div><br><br>
 <jsp:include page="../footer.jsp"/>
 </body>
 </html>

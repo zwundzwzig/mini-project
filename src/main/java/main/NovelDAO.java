@@ -46,4 +46,5 @@ public interface NovelDAO {
 
     public List<NovelDTO> searchSimple(NovelDTO dto);
 
+
 }

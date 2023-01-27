@@ -82,4 +82,34 @@ public class NovelController {
 		mv.setViewName("redirect:/oneNovelPage?id=" + id + "&page=1");
 		return mv;
 	}
+	
+//	@PostMapping("/orderBy")
+//	public ModelAndView orderBy(HttpServletRequest request) {
+//		ModelAndView mv = new ModelAndView();
+//		String[] sequence = request.getParameterValues("sequence");
+//		String[] novel_id = request.getParameterValues("novel_id");
+//		System.out.println(Arrays.toString(sequence));
+//		System.out.println(Arrays.toString(novel_id));
+////		String[] list2 = service.orderBy(list);
+//		return mv;
+//	}
+	
+	
+	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
