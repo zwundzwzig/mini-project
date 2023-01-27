@@ -18,7 +18,8 @@
     FROM libraries l
            JOIN episodes e ON l.episode_id = e.id
            JOIN novels n ON e.novel_id = n.id
-    WHERE l.user_id = #{userId};
+    WHERE l.user_id = #{userId}
+    ORDER BY novelTitle, sequence
   </select>
 
   <select id="oneMember" parameterType="String" resultType="userdto">
